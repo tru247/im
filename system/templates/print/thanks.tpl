@@ -29,7 +29,7 @@
 				<div class="row">
 					<div class="col-md-12 pso-header">
 						<i class="fa fa-angle-double-down border-radius-50"></i>
-						<h3>Thanks for uploading your artwork. Our agents will contact you ASAP.</h3>
+						<h3>Your request has been successfully delivered. Our agents will contact you ASAP.</h3>
 					</div>
 				</div>
 			</div>

@@ -283,6 +283,52 @@
       } );
     </script>
 
+    <!-- send-quote-form ajax -->
+    <script type="text/javascript">
+      $( "#send-quote-form" ).submit(function(e) {
+        // Stop form from submitting normally
+        e.preventDefault();
+
+        // Get some values from elements on the page and then prepare the form for ajax post
+        var $form = $(this),
+            // img   = $form.find("input[name='image']" ).val(),
+            client_name     = $form.find("input[name='client_name']" ).val(),
+            client_email    = $form.find("input[name='client_email']" ).val(),
+            item_service    = $form.find("select[name='item_service']").val(),
+            client_phone    = $form.find("input[name='client_phone']").val(),
+            item_qty        = $form.find("input[name='item_qty']").val(),
+            client_msg      = $form.find("textarea[name='client_msg']").val(),
+            url             = $form.attr("action" );
+
+        $.ajax({
+            url: url,
+            type: 'POST',
+            //dataType: 'json',
+            data: {
+                client_name: client_name,
+                client_email: client_email,
+                client_phone: client_phone,
+                item_service: item_service,
+                item_qty: item_qty,
+                client_msg: client_msg
+            },
+            success: function(data) {
+              if(data.msg == 'Success'){
+                  alert(data.info);
+                  window.location = '/printing/thanks';
+              }
+              else if(data.msg = 'Failed'){
+                alert(data.info);
+              }
+            },
+            error: function(data) {
+                //how to pass js data var to html tag in js script!!
+                alert('Uknown error!');
+            }
+        });
+    });
+    </script>
+
     <!--Start of Tawk.to Script-->
     <!-- <script type="text/javascript">
       var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();

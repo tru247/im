@@ -84,7 +84,30 @@ class PrintingController extends InventoryService implements Controller{
 	}
 
 	protected function submitQuote(){
-		echo'<pre>'; print_r($_REQUEST); die;
+		#echo'<pre>'; print_r($_REQUEST); die;
+		$client = trim(filter_input(INPUT_POST, 'client_name'));
+		$cemail = trim(filter_input(INPUT_POST, 'client_email'));
+		$cphone = trim(filter_input(INPUT_POST, 'client_phone'));
+		$service = trim(filter_input(INPUT_POST, 'item_service'));
+		$qty = trim(filter_input(INPUT_POST, 'item_qty'));
+		$cmsg = trim(filter_input(INPUT_POST, 'client_msg'));
+
+		$url = Utils::generateRandomString('_');
+		$status = 'new';
+		$insert = $this->insertQuote($url, $client, $cemail, $cphone, $service, $qty, $cmsg, $status);
+		#echo'<pre>'; print_r($insert); die;
+		if($insert > 0){
+			#send email to admin at this point; and a confirmation email to the user
+			$results['msg'] = 'Success';
+			$results['info'] = 'You have successfully submitted your quote.';
+		}
+		else{
+			$results['msg'] = 'Failed';
+			$results['info'] = 'An error was encountered when submitting your quote.';
+		}
+
+		header('Content-type: application/json');
+        echo json_encode($results);
 	}
 
 	protected function uploadForPrint(){

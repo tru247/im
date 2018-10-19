@@ -381,7 +381,8 @@
 		        <div class="container">
 		            <div class="row">
 		                <div class="offset-xl-1 col-xl-6 offset-lg-1 col-lg-10 offset-md-1 col-md-10 col-sm-12 col-12 mt30">
-		                    <form>
+		                	<!--  -->
+		                    <form id="send-quote-form" method="POST" action="/printing/submit-quote" enctype="multipart/form-data">
 		                        <!-- service-form -->
 		                        <div class="service-form">
 		                            <div class="row">

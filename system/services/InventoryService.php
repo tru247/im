@@ -62,6 +62,28 @@ Class InventoryService extends UserService{
         return $resp;
     }
 
+    protected function insertQuote($url, $client, $email, $phone, $service, $qty, $msg, $status){
+        try{
+            $stmt = $this->runQuery("insert into quote (url, client, email, phone, service, qty, msg, status, created_at) values(:url, :client, :email, :phone, :service, :qty, :msg, :status, now())");
+            $stmt->bindParam(':url', $url);
+            $stmt->bindParam(':client', $client);
+            $stmt->bindParam(':email', $email);
+            $stmt->bindParam(':phone', $phone);
+            $stmt->bindParam(':service', $service);
+            $stmt->bindParam(':qty', $qty);
+            $stmt->bindParam(':msg', $msg);
+            $stmt->bindParam(':status', $status);
+            $stmt->execute();
+
+            $resp = $this->lastID();
+        }
+        catch(PDOException $e){
+            $resp = $e->getMessage();
+        }
+
+        return $resp;
+    }
+
 	#Category
 	protected function insertCategory($name, $url, $ref, $parent, $description){
         try {
