@@ -1,0 +1,158 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: user
+ * Date: 8/8/2017
+ * Time: 6:35 AM
+ */
+
+class CartController extends InventoryService implements Controller {
+    function __construct(){
+        parent::__construct();
+    }
+    
+    private function manageCart(){
+        #get the id
+        $pid = trim(filter_input(INPUT_POST, 'pid'));
+        $pqty = trim(filter_input(INPUT_POST, 'pqty'));
+        if(isset($pid)) {
+            foreach($_POST as $key => $value){
+                $product[$key] = filter_var($value, FILTER_SANITIZE_STRING);
+            }
+            #echo'<pre>'; print_r($product); die;
+            #get product by id as you add
+            $q = "SELECT name, image, price FROM product WHERE id=:id LIMIT 1";
+            $stmt = $this->runQuery($q);
+            $stmt->bindParam(':id', $product['pid'], PDO::PARAM_INT);
+            $stmt->execute();
+            $exists = $stmt->fetch();
+            #echo'<pre>'; print_r($product); die;
+            
+            $total = 0;
+            $subtotal = $product["pprice"] * $pqty;
+            if(isset($_SESSION["trucommerce_cart"])){
+                if(isset($_SESSION["trucommerce_cart"][$product['pid']])) {
+                    $_SESSION["trucommerce_cart"][$product['pid']]["pqty"] = $_SESSION["trucommerce_cart"][$product['pid']]['pqty'] + $pqty;
+                } else {
+                    $_SESSION["trucommerce_cart"][$product['pid']] = $product;
+                }
+            } else {
+                $_SESSION["trucommerce_cart"][$product['pid']] = $product;
+            }
+            
+            #$total_amount = $total + $subtotal;
+            #echo'<pre>'; print_r($total_amount); die;
+            $total_product = count($_SESSION["trucommerce_cart"]);
+            
+            header('Content-type: application/json');
+            echo json_encode(['trucommerce_cart' => $total_product]);
+        }
+    }
+    
+    public function displayCart(){
+        $cart = $_SESSION['trucommerce_cart'];
+	    $cats = $this->getCategories();
+        #echo'<pre>'; print_r($cart); die;
+        
+        $this->assign('cats', $cats);
+        $this->assign('cart', $cart);
+        $this->assign('title', 'Shopping Cart');
+        $this->display('cart/main.tpl');
+    }
+    
+    public function updateCart(){
+        echo'<pre>'; print_r($_REQUEST); die;
+    }
+    
+    public function displayCheckout(){
+        $cart = $_SESSION['trucommerce_cart'];
+	    $cats = $this->getCategories();
+        #echo'<pre>'; print_r($cart); die;
+        
+        $this->assign('cats', $cats);
+        $this->assign('cart', $cart);
+        $this->assign('title', 'Checkout');
+        $this->display('cart/checkout.tpl');
+    }
+    
+    public function placeOrder(){
+        $checkedTerms = trim(filter_input(INPUT_POST, 'checked-terms'));
+        $createAccount = trim(filter_input(INPUT_POST, 'create-account'));
+        if(isset($checkedTerms) && $checkedTerms == 'on'){
+            if(isset($createAccount) && $createAccount == 'on'){
+                #create password here, by hashing the input by the user
+                $pwd = trim(filter_input(INPUT_POST, 'pwd'));
+                $pwdHash = password_hash($pwd, PASSWORD_DEFAULT);
+            }
+            
+            #auto generate client url and get the form client inputs
+            $url = Utils::generateRandomString($fname);
+            $fname = trim(filter_input(INPUT_POST, 'first-name')); 
+            $lname = trim(filter_input(INPUT_POST, 'last-name')); 
+            $company = trim(filter_input(INPUT_POST, 'company-name')); 
+            $company = isset($company) ? $company : NULL;
+            $email = trim(filter_input(INPUT_POST, 'email-address'));
+            $phone = trim(filter_input(INPUT_POST, 'phone')); 
+            $country = trim(filter_input(INPUT_POST, 'country'));
+            $address = trim(filter_input(INPUT_POST, 'address'));
+            $town = trim(filter_input(INPUT_POST, 'town-city'));
+            $county = trim(filter_input(INPUT_POST, 'county'));
+            $postcode = trim(filter_input(INPUT_POST, 'post-code'));
+            $pwdHash = isset($pwdHash) ? $pwdHash : NULL;
+            
+            #Now, save the client halafu return the client ID
+            $clientsrv = new ClientService();
+            if(!empty($fname) && !empty($lname) && !empty($email) && !empty($phone) && !empty($country) && !empty($address) && !empty($town) && !empty($county)){
+                $clientId = $clientsrv->insertClient($url, $fname, $lname, $company, $email, $phone, $country, $address, $town, $county, $postcode, $pwdHash); 
+            
+                if($clientId > 0){
+                    #then, create an order reference id, save the order with the client id in consideration 
+                    $ourl = Utils::generateRandomString($clientId);
+                    $oref = Utils::referenceGenerator('ORDER-');
+                    $total = trim(filter_input(INPUT_POST, 'total'));
+                    $paymode = trim(filter_input(INPUT_POST, 'radio-cash-2'));
+                    $notes = trim(filter_input(INPUT_POST, 'order-notes'));
+                    $status = 'new';
+                    
+                    $i = 0;
+                    foreach ($_POST as $val) {
+                        $pname = $_POST['pname'][$i];
+                        $pqty = $_POST['pqty'][$i];
+                        $pprice = $_POST['pprice'][$i];
+                        $subT = $_POST['subtT'][$i];
+                    
+                        $orderId = $this->insertOrder($ourl, $oref, $clientId, $pname, $pprice, $pqty, $subT, $total, $paymode, $notes, $status);
+                        $i++;
+                    }
+                }
+            }
+        }
+        else{
+            echo'<pre>'; print_r("Please go back and accept Zoe Design World Terms &amp; Conditions"); die;
+        }
+    }
+
+    function execute(){
+        $q = trim(filter_input(INPUT_GET, 'query'));
+        switch (isset($q) ? $q : NULL){
+            case NULL:
+                $this->displayCart();
+                break;
+            case 'manage':
+                $this->manageCart();
+                break;
+            case 'update':
+                $this->updateCart();
+                break;
+            case 'checkout':
+                $this->displayCheckout();
+                break;
+            case 'place-order':
+                $this->placeOrder();
+                break;
+            default:
+                die('Cart query error 404; Page cannot be found');
+                break;
+        }
+    }
+}
