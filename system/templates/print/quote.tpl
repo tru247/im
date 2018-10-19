@@ -390,37 +390,37 @@
 		                                </div>
 		                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 ">
 		                                    <div class="form-group service-form-group">
-		                                        <label class="control-label sr-only" for="name"></label>
-		                                        <input id="name" type="text" placeholder="First Name" class="form-control" required>
+		                                        <label class="control-label sr-only" for="client_name"></label>
+		                                        <input id="client_name" name="client_name" type="text" placeholder="Name" class="form-control" required>
 		                                        <div class="form-icon"><i class="fa fa-user"></i></div>
 		                                    </div>
 		                                </div>
 		                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 ">
 		                                    <div class="form-group service-form-group">
-		                                        <label class="control-label sr-only" for="email"></label>
-		                                        <input id="email" type="email" placeholder="Email" class="form-control" required>
+		                                        <label class="control-label sr-only" for="client_email"></label>
+		                                        <input id="client_email" name="client_email" type="email" placeholder="Email" class="form-control" required>
 		                                        <div class="form-icon"><i class="fa fa-envelope"></i></div>
 		                                    </div>
 		                                </div>
 		                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 ">
 		                                    <div class="form-group service-form-group">
-		                                        <label class="control-label sr-only" for="phone"></label>
-		                                        <input id="phone" type="text" placeholder="Phone" class="form-control" required>
+		                                        <label class="control-label sr-only" for="client_phone"></label>
+		                                        <input id="client_phone" name="client_phone" type="text" placeholder="Phone" class="form-control" required>
 		                                        <div class="form-icon"><i class="fa fa-phone"></i></div>
 		                                    </div>
 		                                </div>
 		                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 ">
 		                                    <div class="form-group service-form-group">
-		                                        <label class="control-label sr-only" for="qty"></label>
-		                                        <input name="qty" type="input" id="qty" class="form-control" required placeholder="Quantity"> 
+		                                        <label class="control-label sr-only" for="item_qty"></label>
+		                                        <input name="item_qty" type="input" id="item_qty" class="form-control" required placeholder="Quantity"> 
 		                                        <div class="form-icon"><i class="fa fa-list"></i></div>
 		                                    </div>
 		                                </div>
 		                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 ">
 		                                    <div class="form-group">
-		                                        <label class="control-label sr-only" for="select"></label>
+		                                        <label class="control-label sr-only" for="item_service"></label>
 		                                        <div class="select">
-		                                            <select id="select" name="select" class="form-control">
+		                                            <select id="select" name="item_service" class="form-control">
 		                                                <option value="">What can we print for you?</option>
 		                                                <option value="stickers" selected="">Stickers (Labels)</option>
 		                                                <option value="business_cards">Business Cards</option>
@@ -451,12 +451,12 @@
 		                                </div>
 		                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 ">
 		                                    <div class="form-group">
-		                                        <label class="control-label sr-only" for="textarea"></label>
-		                                        <textarea class="form-control" id="textarea" name="textarea" rows="3" placeholder="Messages"></textarea>
+		                                        <label class="control-label sr-only" for="client_msg"></label>
+		                                        <textarea class="form-control" id="client_msg" name="client_msg" rows="3" placeholder="Messages"></textarea>
 		                                    </div>
 		                                </div>
 		                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 ">
-		                                    <button type="submit" name="singlebutton" class="btn btn-default btn-block mb10">send message</button>
+		                                    <button type="submit" name="singlebutton" class="btn btn-default btn-block mb10">send quote</button>
 		                                    <p><small>We promise we will never SPAM you with unwanted emails.</small></p>
 		                                </div>
 		                            </div>
