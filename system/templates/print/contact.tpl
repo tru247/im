@@ -75,23 +75,26 @@
 						</p>
 					</div>
 				</div>
-				<form id="contact-form" class="form-validate form-horizontal" method="post" action="#">
-				<div class="col-md-6 col-sm-6 col-xs-12">
-						<textarea aria-required="true" required="required" class="required invalid" rows="10" cols="50" id="jform_contact_message" name="contact_message" aria-invalid="true">Message *</textarea>
-					<p>Ask us a question and we'll write back to you promptly! Simply fill out the form below and click Send Email.</p>
-					<p>Thanks. Items marked with an asterisk (<span class="star">*</span>) are required fields.</p>
-				</div>
-				
-				<div class="col-md-3 col-sm-3 col-xs-12">
-					<input class="name" type="text" value="Enter your name *">
-					<input class="email" type="text" value="Enter E-mail *">
-					<input class="mesage" type="text" value="Enter Mesage Subject *">
-					<div class="button">
-					<input class="subject" type="checkbox" value="Enter Mesage Subject *">
-					<span>Send copy to yourself</span>
+				<form id="contact-form" class="form-validate form-horizontal" method="post" action="/printing/send" enctype="multipart/form-data">					
+					<div class="col-md-3 col-sm-3 col-xs-12">
+						<label for="cname">Name<span style="color: #ff0000;">*</span></label>
+						<input id="cname" name="cname" class="name" type="text" placeholder="Enter your name *" required>
+						<label for="cemail">Email<span style="color: #ff0000;">*</span></label>
+						<input id="cemail" name="cemail" class="email" type="email" placeholder="Enter E-mail *" required>
+						<label for="csubject">Subject<span style="color: #ff0000;">*</span></label>
+						<input id="csubject" name="csubject" class="mesage" type="text" placeholder="Enter Mesage Subject *" required>
+						{*<div class="button">
+							<input class="subject" type="checkbox" placeholder="Enter Mesage Subject *">
+							<span>Send copy to yourself</span>
+						</div>*}
 					</div>
-					<button type="submit" class="sendmail">Submit</button>
-				</div>
+					<div class="col-md-6 col-sm-6 col-xs-12">
+						<label for="contact_message">Message<span style="color: #ff0000;">*</span></label>
+						<textarea id="contact_message" aria-required="true" required class="required invalid" rows="10" cols="50" id="jform_contact_message" name="contact_message" aria-invalid="true" placeholder="Message *"></textarea>
+						<p>Ask us a question and we'll write back to you promptly! Simply fill out the form below and click Send Email.</p>
+						<p>Thanks. Items marked with an asterisk (<span class="star">*</span>) are required fields.</p>
+						<button type="submit" class="sendmail">Submit</button>
+					</div>
 				</form>
 			</div>
 		</section>

@@ -84,6 +84,25 @@ Class InventoryService extends UserService{
         return $resp;
     }
 
+    protected function insertContactUs($url, $name, $email, $subject, $msg, $status){
+        try {
+            $stmt = $this->runQuery("insert into contactus (url, name, email, subject, msg, status, created_at) values(:url, :name, :email, :subject, :msg, :status, now())");
+            $stmt->bindParam(':url', $url);
+	        $stmt->bindParam(':name', $name);
+            $stmt->bindParam(':email', $email);
+            $stmt->bindParam(':subject', $subject);
+            $stmt->bindParam(':msg', $msg);
+            $stmt->bindParam(':status', $status);
+            $stmt->execute();
+
+            $resp = $this->lastID();
+        } catch (PDOException $e) {
+            $resp = $e->getMessage();
+        }
+
+        return $resp;
+    }
+
 	#Category
 	protected function insertCategory($name, $url, $ref, $parent, $description){
         try {

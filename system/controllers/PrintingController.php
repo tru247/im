@@ -214,7 +214,26 @@ class PrintingController extends InventoryService implements Controller{
 	}
 
 	protected function sendMessage(){
-		echo'<pre>'; print_r($_REQUEST); die;
+		$name = trim(filter_input(INPUT_POST, 'cname'));
+		$email = trim(filter_input(INPUT_POST, 'cemail'));
+		$subject = trim(filter_input(INPUT_POST, 'csubject'));
+		$msg = trim(filter_input(INPUT_POST, 'contact_message'));
+
+        $url = Utils::generateRandomString('_'); 
+        $status = 'new';
+        $insert = $this->insertContactUs($url, $name, $email, $subject, $msg, $status);
+        if($insert > 0){
+			#send email to admin at this point; and a confirmation email to the user
+			$results['msg'] = 'Success';
+			$results['info'] = 'You have successfully submitted your message.';
+		}
+		else{
+			$results['msg'] = 'Failed';
+			$results['info'] = 'An error was encountered when submitting your message.';
+		}
+
+		header('Content-type: application/json');
+        echo json_encode($results);
 	}
 
 	function execute(){

@@ -326,7 +326,49 @@
                 alert('Uknown error!');
             }
         });
-    });
+      });
+    </script>
+
+    <!-- contact-us-form ajaxification -->
+    <script type="text/javascript">
+      $( "#contact-form" ).submit(function(e) {
+        // Stop form from submitting normally
+        e.preventDefault();
+
+        // Get some values from elements on the page and then prepare the form for ajax post
+        var $form = $(this),
+            // img   = $form.find("input[name='image']" ).val(),
+            cname     = $form.find("input[name='cname']" ).val(),
+            cemail    = $form.find("input[name='cemail']" ).val(),
+            csubject  = $form.find("input[name='csubject']").val(),
+            contact_message      = $form.find("textarea[name='contact_message']").val(),
+            url       = $form.attr("action" );
+
+        $.ajax({
+            url: url,
+            type: 'POST',
+            //dataType: 'json',
+            data: {
+                cname: cname,
+                cemail: cemail,
+                csubject: csubject,
+                contact_message: contact_message
+            },
+            success: function(data) {
+              if(data.msg == 'Success'){
+                  alert(data.info);
+                  window.location = '/printing/thanks';
+              }
+              else if(data.msg = 'Failed'){
+                alert(data.info);
+              }
+            },
+            error: function(data) {
+                //how to pass js data var to html tag in js script!!
+                alert('Uknown error!');
+            }
+        });
+      });
     </script>
 
     <!--Start of Tawk.to Script-->
