@@ -26,20 +26,19 @@
 			<!--<img src="images/maps.jpg" />-->
 				<div class="mapouter">
 					<div class="gmap_canvas">
-						<iframe width="1380" height="500" id="gmap_canvas" src="https://maps.google.com/maps?q=Imranma%20Digital%20Printing%20Shop%2C%20Plot%201-2%20Nasser%20Road&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
-						<a href="https://www.pureblack.de"></a>
+						<iframe width="1500" height="500" id="gmap_canvas" src="https://maps.google.com/maps?q=Imranma%20Digital%20Printing%20Shop%2C%20Plot%201-2%20Nasser%20Road&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
 					</div>
 					<style>
 						.mapouter{
 							text-align:right;
 							height:500px;
-							width:1080px;
+							width:1500px;
 						}
 						.gmap_canvas {
 							overflow:hidden;
 							background:none!important;
 							height:500px;
-							width:1080px;
+							width:1500px;
 						}
 					</style>
 				</div>		
