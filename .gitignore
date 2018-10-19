@@ -1,0 +1,33 @@
+# ignore IDE/hidden/OS cache files
+.*
+*~
+nbproject
+nb-configuration.xml
+Session.vim
+*.tmproj
+*.tmproject
+tmtags
+Thumbs.db
+Desktop.ini
+.idea
+
+#Ignore zip files
+*.zip
+
+#Ignore design templates, Oldies & Other stuff
+/designs/*
+/OLDIES/*
+/server/*
+/sqls/*
+/system/templates_c
+/uploads/*
+
+# ignore Composer downloads
+/vendor/*
+
+# keep some hiddens
+!/.gitignore
+!/.travis.yml
+
+#Remove the config.php file
+/config.php

@@ -345,8 +345,6 @@
 		padding-top:80px; 
 		padding-bottom:80px;
 	}
-
-
   </style>
 </head>
 <body>
@@ -390,17 +388,10 @@
 		                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mb10 ">
 		                                    <h3>Get Affordable & Best Printing Services</h3>
 		                                </div>
-		                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 ">
+		                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 ">
 		                                    <div class="form-group service-form-group">
 		                                        <label class="control-label sr-only" for="name"></label>
 		                                        <input id="name" type="text" placeholder="First Name" class="form-control" required>
-		                                        <div class="form-icon"><i class="fa fa-user"></i></div>
-		                                    </div>
-		                                </div>
-		                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12  ">
-		                                    <div class="form-group service-form-group">
-		                                        <label class="control-label sr-only" for="name"></label>
-		                                        <input id="name" type="text" placeholder="Last Name" class="form-control" required>
 		                                        <div class="form-icon"><i class="fa fa-user"></i></div>
 		                                    </div>
 		                                </div>
@@ -418,11 +409,11 @@
 		                                        <div class="form-icon"><i class="fa fa-phone"></i></div>
 		                                    </div>
 		                                </div>
-		                                {*<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 ">
+		                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 ">
 		                                    <div class="form-group service-form-group">
-		                                        <label class="control-label sr-only" for="website"></label>
-		                                        <input id="website" type="text" placeholder="Website URL" class="form-control" required>
-		                                        <div class="form-icon"><i class="fa fa-link"></i></div>
+		                                        <label class="control-label sr-only" for="qty"></label>
+		                                        <input name="qty" type="input" id="qty" class="form-control" required placeholder="Quantity"> 
+		                                        <div class="form-icon"><i class="fa fa-list"></i></div>
 		                                    </div>
 		                                </div>
 		                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 ">
@@ -430,14 +421,34 @@
 		                                        <label class="control-label sr-only" for="select"></label>
 		                                        <div class="select">
 		                                            <select id="select" name="select" class="form-control">
-		                                                <option value="">Budget</option>
-		                                                <option value="">$1000</option>
-		                                                <option value="">$5000</option>
-		                                                <option value="">$10000</option>
+		                                                <option value="">What can we print for you?</option>
+		                                                <option value="stickers" selected="">Stickers (Labels)</option>
+		                                                <option value="business_cards">Business Cards</option>
+		                                                <option value="invitations">Invitations</option>
+		                                                <option value="tags">Swing Tags (Hang Tags)</option>
+		                                                <option value="fridge_magnets">Fridge Magnets</option>
+		                                                <option value="shopping_bags">Shopping Bags</option>
+		                                                <option value="wobblers">Wobblers</option>
+		                                                <option value="flyers">Flyers</option>
+		                                                <option value="postcards">Postcards</option>
+		                                                <option value="brochures">Brochures</option>
+		                                                <option value="booklets">Booklets</option>
+		                                                <option value="posters">Posters</option>
+		                                                <option value="presentation_folders">Presentation Folders</option>
+		                                                <option value="letterheads">Letterheads</option>
+		                                                <option value="compliment_slips">Compliment Slips</option>
+		                                                <option value="envelopes">Envelopes</option>
+		                                                <option value="sticky_notes">Sticky Notes (Post-It Notes)</option>
+		                                                <option value="note_pads">Note Pads</option>
+		                                                <option value="invoice_books">Invoice Books</option>
+		                                                <option value="packaging">Packaging</option>
+		                                                <option value="tissue_paper">Tissue Paper</option>
+		                                                <option value="ribbons">Ribbons</option>
+		                                                <option value="others">Others</option>
 		                                            </select>
 		                                        </div>
 		                                    </div>
-		                                </div>*}
+		                                </div>
 		                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 ">
 		                                    <div class="form-group">
 		                                        <label class="control-label sr-only" for="textarea"></label>
