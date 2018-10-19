@@ -48,11 +48,9 @@ class ProductController extends InventoryService implements Controller{
 	private function newProduct(){
 		$this->assign('cats', $this->getCategories());
 		$this->display('product/new.tpl');
-		#echo'<pre>'; print_r($_REQUEST); die;
 	}
 	
 	private function addProduct(){
-        #echo "<pre>"; print_r($_REQUEST); die;
         #pick user inputs
 	    $pname= trim(filter_input(INPUT_POST, 'pname'));
 	    $psummary=  trim(filter_input(INPUT_POST, 'psummary'));
@@ -289,6 +287,7 @@ class ProductController extends InventoryService implements Controller{
     }
 
     public function productPage(){
+        #echo'<pre>'; print_r($_REQUEST); die;
         #get all categories
         $invetorysrv = new InventoryService();
         $cats = $invetorysrv->getCategories();
@@ -315,6 +314,7 @@ class ProductController extends InventoryService implements Controller{
                 $this->allProducts();
                 break;
             case 'page':
+            case 'info':
                 $this->productPage();
                 break;
             case 'add':

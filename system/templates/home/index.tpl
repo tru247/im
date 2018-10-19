@@ -499,7 +499,7 @@
                   <i class="fa fa-newspaper-o"></i>
                 </div>
                 <div class="print-title">
-                  <a href="#">Select Options</a>
+                  <a href="#">Describe the job</a>
                 </div>
                 <div class="print-number">
                   <span>01</span>
@@ -516,7 +516,7 @@
                   <i class="fa fa-arrow-circle-o-up"></i>
                 </div>
                 <div class="print-title">
-                  <a href="#">Upload your design</a>
+                  <a href="#">Upload your design/artwork</a>
                 </div>
                 <div class="print-number">
                   <span>02</span>
@@ -532,7 +532,7 @@
                   <i class="fa fa-shopping-cart"></i>
                 </div>
                 <div class="print-title">
-                  <a href="#">Checkout & Order</a>
+                  <a href="#">Submit your Order</a>
                 </div>
                 <div class="print-number">
                   <span>03</span>
@@ -547,6 +547,18 @@
       </div>
       <div class="bg_make_print">
         
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="block-title-w">
+            <a href="/printing/upload-for-printing">
+              <span class="icon" style="color: #64bc46;">
+                <i class="fa fa-6x fa-cloud-upload border-radius-50" style="font-size: 129px;"></i>
+              </span>
+              <p style="color: #64bc46;" class="block-title"> Click here to uplad your artwork for printing</p>
+            </a> 
+          </div>
+        </div>
       </div>
     </section>
 
@@ -639,7 +651,7 @@
                   Delivery, we can hand it all for you!
                 </p>
               </div>
-              <a href="#" class="btn-readmore order-now">Upload For Print</a>
+              <a href="/printing/upload-for-printing" class="btn-readmore order-now">Upload For Print</a>
             </div>
             <div class="col-md-3 col-sm-6 col-xs-6 or-block">
               <div class="or-image">
@@ -655,7 +667,7 @@
                   we'll bring all your creative ideas to life!
                 </p>
               </div>
-              <a href="#" class="btn-readmore order-now">Upload For Print</a>
+              <a href="/printing/upload-for-printing" class="btn-readmore order-now">Upload For Print</a>
             </div>
             <div class="col-md-3 col-sm-6 col-xs-6 or-block">
               <div class="or-image">
@@ -671,7 +683,7 @@
                   we'll if your file is ready to print!
                 </p>
               </div>
-              <a href="#" class="btn-readmore order-now">Upload For Print</a>
+              <a href="/printing/upload-for-printing" class="btn-readmore order-now">Upload For Print</a>
             </div>
           </div>
         </div>
@@ -1595,49 +1607,65 @@
               <div class="wrap-item">
                 <div class="item">
                   <div class="inner">
-                    <div class="image">
+                    {*<div class="image">
                       <a href="#"><img src="/cdn/imran/images/testimonials/1.png" alt="terminal-01"/></a>
-                    </div>
+                    </div>*}
                     <div class="tes-name">
-                      <a href="#">Sam Ibister</a>
+                      <a href="#">Desire Katana</a>
                     </div>
-                    <div class="tes-job">
+                    {*<div class="tes-job">
                       <span>Web Designe</span>
-                    </div>
+                    </div>*}
                     <div class="tes-decs">
-                      <p>This PSD is so well organised - the best Ive ever downloaded from here. The ideas are also really fresh and new - great work. I cant wait to start work with it!</p>
+                      <p>Nicely done work and on time. Also easily accessible.</p>
                     </div>
                   </div>
                 </div>
                 <div class="item">
                   <div class="inner">
-                    <div class="image">
+                    {*<div class="image">
                       <a href="#"><img src="/cdn/imran/images/testimonials/2.png" alt="terminal-01"/></a>
-                    </div>
+                    </div>*}
                     <div class="tes-name">
-                      <a href="#">Sam Ibister</a>
+                      <a href="#">Douglas Mageto</a>
                     </div>
-                    <div class="tes-job">
+                    {*<div class="tes-job">
                       <span>Web Designe</span>
-                    </div>
+                    </div>*}
                     <div class="tes-decs">
-                      <p>This PSD is so well organised - the best Ive ever downloaded from here. The ideas are also really fresh and new - great work. I cant wait to start work with it!</p>
+                      <p>"High quality work done and on time</p>
                     </div>
                   </div>
                 </div>
                 <div class="item">
                   <div class="inner">
-                    <div class="image">
+                    {*<div class="image">
                       <a href="#"><img src="/cdn/imran/images/testimonials/3.png" alt="terminal-01"/></a>
-                    </div>
+                    </div>*}
                     <div class="tes-name">
-                      <a href="#">Sam Ibister</a>
+                      <a href="#">Mutumba Shabban</a>
                     </div>
-                    <div class="tes-job">
+                    {*<div class="tes-job">
                       <span>Web Designe</span>
-                    </div>
+                    </div>*}
                     <div class="tes-decs">
-                      <p>This PSD is so well organised - the best Ive ever downloaded from here. The ideas are also really fresh and new - great work. I cant wait to start work with it!</p>
+                      <p>Accessible and good customer service</p>
+                    </div>
+                  </div>
+                </div> 
+                <div class="item">
+                  <div class="inner">
+                    {*<div class="image">
+                      <a href="#"><img src="/cdn/imran/images/testimonials/3.png" alt="terminal-01"/></a>
+                    </div>*}
+                    <div class="tes-name">
+                      <a href="#">Jireh Group</a>
+                    </div>
+                    {*<div class="tes-job">
+                      <span>Web Designe</span>
+                    </div>*}
+                    <div class="tes-decs">
+                      <p>"Good service"</p>
                     </div>
                   </div>
                 </div> 
