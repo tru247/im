@@ -8,7 +8,7 @@
 |   Author(s): C.E.O Otieno (trulance247)                                    |
 |          : ogegoe@trulancetechnologies.com                                 |
 |          : trulance247@gmail.com                                           |
-| Copyright (c) 2013-2018, C.E.O Otieno. All Rights Reserved.                |
+| Copyright (c) 2013-2017, C.E.O Otieno. All Rights Reserved.                |
 | ---------------------------------------------------------------------------|
 | I offer a number of paid services :                                        |
 | - Web Hosting on highly optimized fast and secure customized linux servers |
@@ -33,8 +33,59 @@
 | POSSIBILITY OF SUCH DAMAGE.                                                |
 |----------------------------------------------------------------------------|
 */
-Class ErrorService extends InventoryService{
+//include composer autoload
+require_once __ROOT__ . "/system/apis/vendor/autoload.php";
+
+//import the Intervention Image Manager Class
+use Intervention\Image\ImageManager;
+
+class ErrorController extends ErrorService implements Controller{
 	function __construct(){
 		parent::__construct();
 	}
+
+    public function errorPage($value = 404){
+        #echo'<pre>'; print_r($_REQUEST); die;
+        $cats = $this->getCategories();
+        $this->assign('cats', $cats);
+        
+        if ($value = 400) {
+            $this->display('errors/400.tpl');
+        }
+        else if ($value = 401) {
+            $this->display('errors/401.tpl');
+        }
+        else if ($value = 403) {
+            $this->display('errors/403.tpl');
+        }
+        else if ($value = 404) {
+            $this->display('errors/404.tpl');
+        }
+        else if ($value = 500) {
+            $this->display('errors/500.tpl');
+        }
+        
+    }
+
+	function execute(){
+	    $q = trim(filter_input(INPUT_GET, 'query'));
+	    switch (isset($q) ? $q : NULL){
+            case '400':
+                $this->errorPage(400);
+                break;
+            case '401':
+                $this->errorPage(401);
+                break;
+            case '403':
+                $this->errorPage(403);
+                break;
+            case '404':
+                $this->errorPage(404);
+                break;
+            case '500':
+                $this->errorPage(500);
+                break;
+        }
+    }
 }
+
