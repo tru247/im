@@ -88,14 +88,14 @@
 											<div class="col-md-6">
 												<div class="form-group">
 													<label class="control-label mb-10">Product Name</label>
-													<input id="" class="form-control" placeholder="Product 1" name="pname" type="text">
+													<input id="" class="form-control" placeholder="Product 1" name="pname" type="text" required>
 												</div>
 											</div>
 											<!--/span-->
 											<div class="col-md-6">
 												<div class="form-group">
 													<label class="control-label mb-10">Product Summary</label>
-													<input id="lastName" class="form-control" placeholder="Short product summary" name="psummary" type="text">
+													<input id="lastName" class="form-control" placeholder="Short product summary" name="psummary" type="text" required="">
 												</div>
 											</div>
 											<!--/span-->
@@ -141,7 +141,7 @@
 													<label class="control-label mb-10">Price</label>
 													<div class="input-group">
 														<div class="input-group-addon"><strong>{$app.currency}</strong></div>
-														<input class="form-control" name="pprice" id="exampleInputuname" placeholder="1530" type="number">
+														<input class="form-control" name="pprice" id="exampleInputuname" placeholder="1530" type="number" required>
 													</div>
 												</div>
 											</div>
@@ -201,7 +201,7 @@
 										<div class="row">
 											<div class="col-lg-12">
 												<div class="fileupload btn btn-info btn-anim"><i class="fa fa-upload"></i><span class="btn-text">Upload new image</span>
-													<input class="upload" name="photo" type="file">
+													<input class="upload" name="photo" type="file" required>
 												</div>
 											</div>
 										</div>

@@ -93,6 +93,7 @@ class ProductController extends InventoryService implements Controller{
 
 	    //Read image from temporary file & Resize image
 	    $img = $imageManager->make($_FILES['photo']['tmp_name'])->resize(260, 260);
+        #echo "<pre>"; print_r($img); die;
 
 	    //save image & Proceed
 	    if($img->save($targetPath)){

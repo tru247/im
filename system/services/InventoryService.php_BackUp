@@ -179,10 +179,10 @@ Class InventoryService extends UserService{
     }
 
     #Product
-    protected function insertProduct($url, $sku, $name, $summary, $cat, $status, $price, $commission, $discount, $descr, $metatitle, $metakey, $image, $brand, $delivery, $stock){
+    protected function insertProduct($url, $sku, $pname, $psummary, $cat, $status, $pprice, $commission, $discount, $pdescription, $pdetails, $data_info, $ptimes, $metatitle, $metakey, $photoStore, $brand, $delivery, $stock){
     	try {
-            $stmt = $this->runQuery("insert into product(url, sku, name, summary, cat, status, price, commission, discount, description, metaTitle, metaKey, image, brand, deliveryCondition, stock, created_at)
-                values (:url, :sku, :name, :sum, :cat, :status, :price, :commission, :discount, :descr, :metatitle, :metakey, :img, :brand, :delivery, :stock, now())");
+            $stmt = $this->runQuery("insert into product(url, sku, name, summary, cat, status, price, commission, discount, description, details, data_info, production_times, metaTitle, metaKey, image, brand, deliveryCondition, stock, created_at)
+                values (:url, :sku, :name, :sum, :cat, :status, :price, :commission, :discount, :descr, :pdetails, :data_info, :ptimes, :metatitle, :metakey, :img, :brand, :delivery, :stock, now())");
             $stmt->bindParam(':url', $url);
             $stmt->bindParam(':sku', $sku);
             $stmt->bindParam(':name', $name);
@@ -192,7 +192,10 @@ Class InventoryService extends UserService{
             $stmt->bindParam(':price', $price);
             $stmt->bindParam(':commission', $commission);
             $stmt->bindParam(':discount', $discount);
-            $stmt->bindParam(':descr', $descr);
+	    $stmt->bindParam(':descr', $descr);
+	    $stmt->bindParam('pdetails', $pdetails);
+	    $stmt->bindParam('data_info', $data_info);
+	    $stmt->bindParam('ptimes', $ptimes);
             $stmt->bindParam(':metatitle', $metatitle);
             $stmt->bindParam(':metakey', $metakey);
             $stmt->bindParam(':img', $image);
@@ -593,4 +596,3 @@ Class InventoryService extends UserService{
         return $results;
     }
 }
-

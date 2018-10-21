@@ -17,7 +17,7 @@
                 <a href="/">Home</a>
               </li>
               <li>
-                <span>{$prod.name|capitalize}</span>
+                <span>{$p.name|capitalize}</span>
               </li>
             </ul>
           </div>
@@ -35,24 +35,24 @@
                   <div class="wrapper row">
                     <div class="preview col-md-6">
                       <div class="preview-pic tab-content">
-                        <div class="tab-pane active" id="pic-1"><img width="400" height="252" src="/products/{$prod.image}" /></div>
+                        <div class="tab-pane active" id="pic-1"><img src="/products/{$p.image}" /></div>
                         <div class="tab-pane" id="pic-2"><img src="http://placekitten.com/400/252" /></div>
                         <div class="tab-pane" id="pic-3"><img src="http://placekitten.com/400/252" /></div>
                         <div class="tab-pane" id="pic-4"><img src="http://placekitten.com/400/252" /></div>
                         <div class="tab-pane" id="pic-5"><img src="http://placekitten.com/400/252" /></div>
                       </div>
-                      <ul class="preview-thumbnail nav nav-tabs">
+                      {*<ul class="preview-thumbnail nav nav-tabs">
                         <li class="active"><a data-target="#pic-1" data-toggle="tab"><img src="http://placekitten.com/200/126" /></a></li>
                         <li><a data-target="#pic-2" data-toggle="tab"><img src="http://placekitten.com/200/126" /></a></li>
                         <li><a data-target="#pic-3" data-toggle="tab"><img src="http://placekitten.com/200/126" /></a></li>
                         <li><a data-target="#pic-4" data-toggle="tab"><img src="http://placekitten.com/200/126" /></a></li>
                         <li><a data-target="#pic-5" data-toggle="tab"><img src="http://placekitten.com/200/126" /></a></li>
-                      </ul>
+                      </ul>*}
                     </div>
                     <div class="details col-md-6">
-                      <h3 class="product-title">{$prod.name}</h3>
+                      <h3 class="product-title">{$p.name}</h3>
                       <p class="product-description">
-                        {$prod.summary}
+                        {$p.summary}
                       </p>
                       <!-- Nav tabs -->
                       <ul class="nav nav-tabs" role="tablist">
@@ -64,10 +64,10 @@
 
                       <!-- Tab panes -->
                       <div class="tab-content">
-                        <div class="tab-pane fade in active" id="descr">{$prod.details}</div>
-                        <div class="tab-pane" id="details">{$prod.description}</div>
-                        <div class="tab-pane" id="data_info">{$prod.data_info}</div>
-                        <div class="tab-pane" id="prod_times">{$prod.ptimes}</div>
+                        <div class="tab-pane fade in active" id="descr">{$p.details}</div>
+                        <div class="tab-pane" id="details">{$p.description}</div>
+                        <div class="tab-pane" id="data_info">{$p.data_info}</div>
+                        <div class="tab-pane" id="prod_times">{$p.production_times}</div>
                       </div>
                       <!-- 
                       <h4 class="price">current price: <span>{$app.currency} {$prod.price|number_format:2:".":","}</span></h4>
