@@ -10,8 +10,7 @@
     <meta name="author" content=""/>
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="favicon.ico">
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/cdn/imran/favicon.png" type="image/x-icon" />
 
     <!--alerts CSS -->
     <link href="/cdn/admin/vendors/bower_components/sweetalert/dist/sweetalert.css" rel="stylesheet" type="text/css">

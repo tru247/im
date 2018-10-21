@@ -104,15 +104,17 @@ Class InventoryService extends UserService{
     }
 
 	#Category
-	protected function insertCategory($name, $url, $ref, $parent, $description){
+	protected function insertCategory($cname, $ctitle, $url, $ref, $cparent, $cdesc, $cimage, $cpromo){
         try {
-            $stmt = $this->runQuery("insert into category(name, url, ref, parent, description, created_at)
-                                         values (:name, :url, :ref, :parent, :desc, now())");
-            $stmt->bindParam(':name', $name);
+            $stmt = $this->runQuery("insert into category(name, title, url, ref, parent, description, image, promo, created_at) values (:name, :title, :url, :ref, :parent, :desc, :img, :promo, now())");
+            $stmt->bindParam(':name', $cname);
+            $stmt->bindParam(':title', $ctitle);
             $stmt->bindParam(':url', $url);
             $stmt->bindParam(':ref', $ref);
-            $stmt->bindParam(':parent', $parent);
-            $stmt->bindParam(':desc', $description);
+            $stmt->bindParam(':parent', $cparent);
+            $stmt->bindParam(':desc', $desc);
+            $stmt->bindParam(':img', $cimage);
+            $stmt->bindParam(':promo', $cpromo);
             $stmt->execute();
 
             $result = $this->lastID();

@@ -17,24 +17,32 @@ class CategoryController extends InventoryService implements Controller {
     }
 
     private function addCategory(){
+        #echo "<pre>"; print_r($_REQUEST); die;
         #get inputs
         $cname = trim(filter_input(INPUT_POST, 'name'));
         $cparent = trim(filter_input(INPUT_POST, 'parent'));
-        $cdesc = trim(filter_input(INPUT_POST, 'desc'));
         if (empty($cparent)) {
             $cparent = 0;
         }
+        $cdesc = trim(filter_input(INPUT_POST, 'desc'));
+        $ctitle = trim(filter_input(INPUT_POST, 'title'));
+        if(empty($ctitle)){
+            $ctitle = 'Category '. $cname .' Title';
+        }
+        #echo "<pre>"; print_r($cdesc); die;
+        $cimage = 'https://via.placeholder.com/849x227';
+        $cpromo = 'https://via.placeholder.com/1141x200';
         #echo "<pre>"; print_r($cparent); die;
 
         #generate url
-        $url = Utils::generateRandomString('');
+        $url = Utils::generateRandomString('-'.$cname);
 
         #generate ref no
         $ref = 'CAT';
         $ref = Utils::referenceGenerator($ref);
 
         #save into the db
-        $insert = $this->insertCategory($cname, $url, $ref, $cparent, $cdesc);
+        $insert = $this->insertCategory($cname, $ctitle, $url, $ref, $cparent, $cdesc, $cimage, $cpromo);
         #echo "<pre>"; print_r($insert); die;
         
         if($insert){

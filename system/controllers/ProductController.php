@@ -98,7 +98,7 @@ class ProductController extends InventoryService implements Controller{
 	    //save image & Proceed
 	    if($img->save($targetPath)){
             // echo "<pre>"; print_r($_FILES); die;
-            $url = Utils::generateRandomString(''); 
+            $url = Utils::generateRandomString($metatitle.'-'.$metakey.'-'.$pname); 
             // Get me my skus!
             $sku = Utils::skuGenerator($pname);
             #insert the product at this point
