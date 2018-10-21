@@ -13,6 +13,7 @@ class ComposerStaticInit3a7a7d50f47bf02bb3fee4a5b3abd59b
     public static $prefixLengthsPsr4 = array (
         'P' => 
         array (
+            'Psr\\Log\\' => 8,
             'Psr\\Http\\Message\\' => 17,
         ),
         'I' => 
@@ -26,6 +27,10 @@ class ComposerStaticInit3a7a7d50f47bf02bb3fee4a5b3abd59b
     );
 
     public static $prefixDirsPsr4 = array (
+        'Psr\\Log\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/psr/log/Psr/Log',
+        ),
         'Psr\\Http\\Message\\' => 
         array (
             0 => __DIR__ . '/..' . '/psr/http-message/src',
@@ -41,6 +46,13 @@ class ComposerStaticInit3a7a7d50f47bf02bb3fee4a5b3abd59b
     );
 
     public static $prefixesPsr0 = array (
+        'P' => 
+        array (
+            'PayPal' => 
+            array (
+                0 => __DIR__ . '/..' . '/paypal/rest-api-sdk-php/lib',
+            ),
+        ),
         'M' => 
         array (
             'Monolog' => 

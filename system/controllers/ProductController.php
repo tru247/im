@@ -288,18 +288,21 @@ class ProductController extends InventoryService implements Controller{
 
     public function productPage(){
         #echo'<pre>'; print_r($_REQUEST); die;
-        $cats = $this->getCategories();
+        #get all categories
+        $invetorysrv = new InventoryService();
+        $cats = $invetorysrv->getCategories();
         $this->assign('cats', $cats);
         
         $pUrl = trim(filter_input(INPUT_GET, 'info'));
-        $prod = $this->findProdDetails($pUrl); 
+        $p = $this->findProdDetails($pUrl); 
         #echo "<pre>"; print_r($p); die;
         
         $gallery = $this->getProductGallery($pUrl);
         #echo'<pre>'; print_r($gallery); die;
         
         $this->assign('gallery', $gallery);
-        $this->assign('prod', $prod);
+        $this->assign('p', $p);
+        $this->assign('title', 'e-mboga.co.ke: ' .$p['name']);
         $this->display('product/page.tpl');
     }
 
@@ -338,13 +341,15 @@ class ProductController extends InventoryService implements Controller{
             case 'delete':
                 $this->productDelete();
                 break;
+                
+                
             case 'details':
                 $this->productDetails();
-                break;
+                die;
             default:
-                $error = new ErrorController();
-                $error->errorPage(400);                
+                die("Product query error 404: Page not found");
                 break;
         }
     }
 }
+
