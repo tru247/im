@@ -198,7 +198,7 @@
                         <div class="col-sm-3 col-xs-6 item" style="margin: 0px;margin-bottom: 12px;">
                             <div class="col-item">
                                 <div class="photo">
-                                  <a href="#">
+                                  <a href="/product/info/{$p.url}" title="clieck to view more details">
                                     <img src="/products/{$p.image}" class="img-responsive" alt="{$p.name}" />
                                   </a>
                                 </div>
@@ -215,12 +215,22 @@
                                     </div>
                                     <div class="separator clear-left">
                                         <p class="btn-add">
-                                            <i class="fa fa-shopping-cart"></i>
-                                            <a href="#" class="hidden-sm">Add to cart</a>
+                                            <form class="product-cart-form">
+                                              <input type="hidden" name="pid" value="{$p.id}"/>
+                                              <input type="hidden" name="pname" value="{$p.name}"/>
+                                              <input type="hidden" name="pimage" value="{$p.image}"/>
+                                              <input type="hidden" name="pprice" value="{$p.price}"/>
+                                              <input type="hidden" name="pqty" value="1" />
+                                              <input type="hidden" value="{$p.url}" name="purl">
+                                              <button type="submit" class="btn btn-primary" style="background: #0EADA9; border-color: #0EADA9;">
+                                                <i class="fa fa-shopping-cart"></i>
+                                                Add to cart
+                                              </button>
+                                            </form>
                                         </p>
                                         <p class="btn-details">
                                           <i class="fa fa-list"></i>
-                                          <a href="/product/info/{$p.url}" class="hidden-sm">More details</a>
+                                          <a href="/product/info/{$p.url}" class="" style="color: #0EADA9;">More details</a>
                                         </p>
                                     </div>
                                     <div class="clearfix">

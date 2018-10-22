@@ -89,7 +89,7 @@
                                                 <a href="/product/delete/{$product.id}" class="font-18 txt-grey pull-left"><i class="zmdi zmdi-close"></i></a>
                                             </div>
 
-                                            <a href="{$globals.prod.profile|cat:($product.url)}"> <img src="/products/{$product.image}" class="img-responsive" alt="{$product.name}" /> </a>
+                                            <a href="/product/profile/{$product.url}"> <img src="/products/{$product.image}" class="img-responsive" alt="{$product.name}" /> </a>
                                         </div>
                                         <div class="info">
                                             <h6>{$product.name|truncate:30}</h6>

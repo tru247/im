@@ -88,7 +88,7 @@
                                                     <li data-target="#carousel-example-captions-1" data-slide-to="1"></li>
                                                 </ol>
                                                 <div role="listbox" class="carousel-inner">
-                                                    <div class="item active"> <img src="/uploads/{$p.image}" alt="First slide image"> </div>
+                                                    <div class="item active"> <img src="/products/{$p.image}" alt="First slide image"> </div>
 							                        {foreach $gallery as $photo}
                                                         <div class="item"> <img src="/products/{$photo.image}" alt="Second slide image"> </div>
                                                     {/foreach}
@@ -105,13 +105,16 @@
                                             </div>
                                             <div class="average-review inline-block mb-10">&nbsp;(<span class="review-count">5</span> customer review)</div>
                                             <h3 class="mb-20 weight-500">{$p.name}</h3>
-                                            <div class="product-price head-font mb-30">KES. {$p.price|number_format:2:".":","}</div>
+                                            <div class="product-price head-font mb-30">
+                                                <strong>{$app.currency}.</strong> {$p.price|number_format:2:".":","}
+                                            </div>
                                             <p class="mb-50">
                                                 {$p.summary}
                                             </p>
 
                                             {*Create a form here with invinsible form that does all the add to cart activities...*}
-                                            <form id="add-cart-form" action="{$globals.cart.add|cat:$info}">
+                                            <a class="btn btn-danger btn-anim" href="/product/edit/{$p.id}"><i class="fa fa-edit"></i>Edit</a>
+                                            {*<form id="add-cart-form" action="{$globals.cart.add|cat:$info}">
                                                 <input type="hidden" name="pname" value="{$p.name}">
                                                 <input type="hidden" name="pprice" value="{$p.price}">
                                                 <input type="hidden" name="pimage" value="{$p.imgUrl}">
@@ -124,7 +127,7 @@
                                                         <span class="btn-text">add to cart</span>
                                                     </button>
                                                 </form>
-                                            </div>
+                                            </div>*}
                                             {*<div class="btn-group wishlist">*}
                                                 {*Create a form here with invinsible form that does all the add to wishlist activities...*}
                                                 {*<button class="btn btn-success btn-outline btn-anim"><i class="icon-heart"></i><span class="btn-text">add to wishlist</span></button>*}

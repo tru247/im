@@ -159,43 +159,32 @@
             <div class="cart-w SC-w hd-pd ">
               <span class="mcart-icon dropdowSCIcon">
                 <i class="fa fa-shopping-cart"></i>
-                <span class="mcart-dd-qty">2</span>
+                <span class="mcart-dd-qty">{$pCounter|default: 0}</span>
               </span>
               <div class="mcart-dd-content dropdowSCContent clearfix">
-                <div class="mcart-item-w clearfix1">
-                  <ul>
-                    <li class="mcart-item">
-                      <img src="/cdn/imran/images/product/mcart-postcard.jpg" alt="postcard cards">
-                      <div class="mcart-info">
-                        <a href="detail.html" class="mcart-name">Postcards Cards</a>
-                        <span class="mcart-qty">1 x </span>
-                        <span class="mcart-price">$ 10.09</span>
-                        <span class="mcart-remove-item">
-                          <i class="fa fa-times-circle"></i>
-                        </span>
-                      </div>
-                    </li>
-                  </ul>
-                </div>
-                                                            
-                <div class="mcart-item-w clearfix">
-                  <ul>
-                    <li class="mcart-item iteam2">
-                      <img src="/cdn/imran/images/product/mcart-postcard.jpg" alt="postcard cards">
-                      <div class="mcart-info">
-                        <a href="detail.html" class="mcart-name">Postcards Cards</a>
-                        <span class="mcart-qty">1 x </span>
-                        <span class="mcart-price">$ 10.09</span>
-                        <span class="mcart-remove-item">
-                          <i class="fa fa-times-circle"></i>
-                        </span>
-                      </div>
-                    </li>
-                  </ul>
-                </div>
+                {assign var=total value=0}
+                {foreach $cart as $c}
+                  <div class="mcart-item-w clearfix1">
+                    <ul>
+                      <li class="mcart-item">
+                        <img width="75" height="51" src="/products/{$c.pimage}" alt="{$c.pname}">
+                        <div class="mcart-info">
+                          <a href="/product/info/{$c.purl}" class="mcart-name">{$c.pname}</a>
+                          <span class="mcart-qty"><strong>{$c.pqty} </strong> x </span>
+                          {assign var = t value = $c.pprice * $c.pqty}
+                          <span class="mcart-price"><strong>{$t|number_format:2:".":","}/-</strong></span>
+                          {*<span class="mcart-remove-item">
+                            <i class="fa fa-times-circle"></i>
+                          </span>*}
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                {/foreach}
+
                 <div class="mcart-total clearfix">
                   <table>
-                    <tr>
+                    {*<tr>
                       <td>Sub-Total</td>
                       <td>$ 10.09</td>
                     </tr>
@@ -206,16 +195,22 @@
                     <tr>
                       <td>VAT (20%)</td>
                       <td>$ 2.018</td>
-                    </tr>
-                    <tr class="total">
-                      <td>Total</td>
-                      <td>$ 10.108</td>
-                    </tr>
+                    </tr>*}
+                    {if $pCounter > 0}
+                      <tr class="total">
+                        <td>Total</td>
+                        <td><strong>{$app.currency}.</strong> {$totalAmount|number_format:2:".":","}</td>
+                      </tr>
+                  {else}
+                    <div class=""> 
+                      <p>Your cart is empty.</p>
+                    </div>  
+                  {/if}
                   </table>
                 </div>
                 <div class="mcart-links buttons-set clearfix">
-                  <a href="cart.html" class="gbtn mcart-link-cart">View Cart</a>
-                  <a href="checkout.html" class="gbtn mcart-link-checkout">Checkout</a>
+                  <a href="/cart" class="gbtn mcart-link-cart">View Cart</a>
+                  <a href="/cart/checkout" class="gbtn mcart-link-checkout">Checkout</a>
                 </div>
               </div>
             </div>

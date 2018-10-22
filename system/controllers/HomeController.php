@@ -12,7 +12,7 @@ Class HomeController extends BaseService implements Controller{
 
 	    $prods = $invetorysrv->getRandomFourProduct();
 	    $this->assign('prods', $prods);
-	    #echo'<pre>'; print_r($app ); die;
+	    #echo'<pre>'; print_r($prods ); die;
 	    
 	    #get blogs
 	    #$blogsrv = new BlogService();

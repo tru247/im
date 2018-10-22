@@ -12,9 +12,11 @@ class CartController extends InventoryService implements Controller {
     }
 
     private function manageCart(){
+        #echo "<pre>"; print_r($_REQUEST); die;
         #get the id
         $pid = trim(filter_input(INPUT_POST, 'pid'));
         $pqty = trim(filter_input(INPUT_POST, 'pqty'));
+        $purl = trim(filter_input(INPUT_POST, 'purl'));
 
         $pCounter = $_SESSION['p_counter'];
         $pCounter = $pCounter + $pqty;
@@ -23,9 +25,10 @@ class CartController extends InventoryService implements Controller {
             foreach($_POST as $key => $value){
                 $product[$key] = filter_var($value, FILTER_SANITIZE_STRING);
             }
-            #echo'<pre>'; print_r($product); die;
+            #echo "<pre>"; print_r($product); die;
+
             #get product by id as you add
-            $q = "SELECT name, image, price FROM product WHERE id=:id LIMIT 1";
+            $q = "SELECT url, name, image, price FROM product WHERE id=:id LIMIT 1";
             $stmt = $this->runQuery($q);
             $stmt->bindParam(':id', $product['pid'], PDO::PARAM_INT);
             $stmt->execute();
@@ -48,6 +51,7 @@ class CartController extends InventoryService implements Controller {
             $_SESSION['total_amount'] = $total_amount;
 
             $_SESSION['p_counter'] = $pCounter;
+            #echo "<pre>"; print_r($_SESSION["trucommerce_cart"]);die;
 
             $total_product = count($_SESSION["trucommerce_cart"]);
 
@@ -61,6 +65,7 @@ class CartController extends InventoryService implements Controller {
 	    $cats = $this->getCategories();
         #echo'<pre>'; print_r($_SESSION); die;
 
+        $this->assign('le_grand_total', $_SESSION['total_amount']);
         $this->assign('cats', $cats);
         $this->assign('cart', $cart);
         $this->assign('title', 'Shopping Cart');

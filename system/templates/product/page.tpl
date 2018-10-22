@@ -7,7 +7,7 @@
         <div class="row">
           <div class="col-sm-3 hidden-xs">
             <h1 class="mh-title">
-              {$prod.name|capitalize}
+              <strong>{$p.name|capitalize}</strong>
             </h1>
           </div>
           <div class="breadcrumb-w col-sm-9"> 
