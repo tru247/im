@@ -1,347 +1,640 @@
-{include file="emboga/header.tpl"}
-<div class="breadcrumb" save_image_to_download="true">
-  <div class="container">
-    <div class="breadcrumb-inner">
-      <ul class="list-inline list-unstyled">
-        <li><a href="/">Home</a></li>
-        <li class="active">Checkout</li>
-      </ul>
-    </div><!-- /.breadcrumb-inner -->
-  </div><!-- /.container -->
-</div>
-<!--  /.breadcrumb  -->
+{include file="shared/site_header.tpl"}
 
-<div class="body-content" save_image_to_download="true">
-	<div class="container">
-		<div class="checkout-box ">
-			<div class="row">
-				<div class="col-md-12">
-					<div class="panel-group checkout-steps" id="accordion">
-						<form id="place-order-form" method="POST" enctype="multipart/form-data" role="form">
-							<div class="row">
-								<!-- guest-login -->			
-								<div class="col-md-6 col-sm-6 guest-login">
-									<h2>1. Checkout Option</h2><hr>
-									<h4 class="checkout-subtitle">Checkout as Guest</h4>
-									<p class="text title-tag-line">You don't need to register with us. Shop at your own convenience:</p>
-
-									<!-- radio-form  -->
-								    <div class="radio radio-checkout-unicase"> 
-										<div class="form-group">
-										    <label class="info-title" for="name">Name <span>*</span></label>
-										    <input style="border: 1px solid #3ab54a;" class="form-control unicase-form-control text-input" id="name" name="name" placeholder="" type="text" required>
-									  	</div>
-									  	<div class="form-group">
-									    	<label class="info-title" for="email">Email <span>*</span></label>
-									    	<input style="border: 1px solid #3ab54a;" class="form-control unicase-form-control text-input" id="email" name="email" placeholder="" type="text" required>
-									  	</div>
-									  	<div class="form-group">
-									    	<label class="info-title" for="phone">Phone <span></span></label>
-									    	<input style="border: 1px solid #3ab54a;" class="form-control unicase-form-control text-input" id="phone" name="phone" placeholder="" type="text">
-									  	</div>
-								    </div> 
-								</div>
-								<!-- guest-login -->
-							</div>	
-
-				      		<div class="row">
-				      			<!-- guest-login -->			
-								<div class="col-md-12 col-sm-12 guest-login">
-									<h2>2. Shipping Address</h2><hr>
-									<h4 class="checkout-subtitle">Fill in your shipping details below</h4>
-									{*<p class="text title-tag-line">Register with us for future convenience:</p>*}
-
-									<!-- radio-form  -->
-								    <div class="radio radio-checkout-unicase"> 
-										<div class="row">
-											<div class="col-sm-6">
-												<div class="form-group">
-												    <label class="info-title" for="name">Shipping Address <span>*</span></label>
-												    <input style="border: 1px solid #3ab54a;" class="form-control unicase-form-control text-input" id="s_address" placeholder="" name="ship_addr" type="text" required>
-											  	</div>
-											</div>
-											<div class="col-sm-6">
-												<div class="form-group">
-												    <label class="info-title" for="name">Shipping City/Town <span>*</span></label>
-												    <input style="border: 1px solid #3ab54a;" class="form-control unicase-form-control text-input" id="s_town" placeholder="" name="ship_town" type="text" required>
-											  	</div>
-											</div>
-										</div>
-										<div class="row">
-											<div class="col-sm-6">
-												<div class="form-group">
-												    <label class="info-title" for="name">Shipping County <span>*</span></label>
-												    <select style="border: 1px solid #3ab54a;" class="form-control unicase-form-control text-input" id="s_county" placeholder="" name="ship_county" required>
-												    	{foreach $counties as $c}
-												    		<option value="$c.code">{$c.title}</option>
-												    	{/foreach}
-												    </select>
-											  	</div>
-											</div>
-											<div class="col-sm-6">
-												<div class="form-group">
-												    <label class="info-title" for="name">Shipping Postal Code <span>*</span></label>
-												    <input style="border: 1px solid #3ab54a;" class="form-control unicase-form-control text-input" id="s_postal" placeholder="" name="ship_code" type="text" required>
-											  	</div>
-											</div>
-										</div>
-								    </div> 
-								</div>
-								<!-- guest-login -->
-				      		</div>
-
-				      		<div class="row">			
-								<div class="col-md-12 col-sm-12 guest-login">
-									<h2>3. Shipping Method</h2><hr>
-									<h4 class="checkout-subtitle">Choose your preferred shipping option</h4>
-									<div class="radio radio-checkout-unicase" style="margin-left: 10%;"> 
-								        <input id="e-shipping" type="radio" name="shipping" value="e-shipping" checked>  
-								        <label class="radio-button guest-check" for="e-shipping">eMboga Couriers</label> 
-								        {if !empty($ship)}
-								        	{foreach $ship as $s}
-										        <br>
-										        <input id="register-{$s.id}" type="radio" name="shipping" value="{$s.name}">
-										        <label class="radio-button" for="register-{$s.id}">{$s.title}</label>  
-									        {/foreach}
-								        {/if}
-								        <br>
-								    </div>
-								</div> 
-					    	</div>
-							
-							<div class="row">			
-								<div class="col-md-12 col-sm-12 guest-login">
-									<h2>4. Payment Method</h2><hr>
-									<h4 class="checkout-subtitle">Choose your preferred payment method</h4>
-									<div class="radio radio-checkout-unicase" style="margin-left: 10%;">  
-								        <input id="cod" type="radio" name="payment" value="cod" checked>  
-								        <label class="radio-button guest-check" for="cod">Cash On Delivery</label>  
-								        <br>
-								        {if !empty($pays)}
-									        {foreach $pays as $p}
-										        <input id="register-{$p.id}" type="radio" name="payment" value="{$p.name}">  
-										        <label class="radio-button" for="register-{$p.id}">{$p.title}</label>  
-									        	<br>
-									        {/foreach}
-								        {/if}
-								        <br>
-								    </div>
-								</div> 
-					    	</div>	
-
-					    	<div class="row">
-								<div class="col-md-12 col-sm-12 guest-login">
-									<h2>5. Order Preview</h2><hr>
-									<div class="shopping-cart">
-								        <div class="shopping-cart-table ">
-								          <div class="table-responsive">
-								            <table class="table">
-								              <thead>
-								                <tr>
-								                  {*<th class="cart-romove item">Remove</th>*}
-								                  <th class="cart-description item">Image</th>
-								                  <th class="cart-product-name item">Product Name</th>
-								                  {*<th class="cart-edit item">Edit</th>*}
-								                  <th class="cart-qty item">Quantity</th>
-								                  <th class="cart-sub-total item">Subtotal</th>
-								                  <th class="cart-total last-item">Total</th>
-								                </tr>
-								              </thead><!-- /thead -->
-								              <tfoot>
-								              </tfoot>
-								              <tbody>
-								                {assign var=total value=0}
-								                {foreach $cart as $c}
-								                  <tr>
-								                    {*<td class="romove-item"><a href="cart/delete/{$c.url}" title="cancel" class="icon"><i class="fa fa-trash-o"></i></a></td>*}
-								                    <td class="cart-image">
-								                      <a class="entry-thumbnail" href="#">
-								                          <img src="/products/{$c.pimage}" alt="{$c.pname}">
-								                      </a>
-								                    </td>
-								                    <td class="cart-product-name-info">
-								                      <h4 class="cart-product-description"><a href="#">{$c.pname}</a></h4>
-								                      {*<div class="row">
-								                        <div class="col-sm-4">
-								                          <div class="rating rateit-small rateit"><button id="rateit-reset-2" data-role="none" class="rateit-reset" aria-label="reset rating" aria-controls="rateit-range-2" style="display: none;"></button><div id="rateit-range-2" class="rateit-range" tabindex="0" role="slider" aria-label="rating" aria-owns="rateit-reset-2" aria-valuemin="0" aria-valuemax="5" aria-valuenow="4" style="width: 70px; height: 14px;" aria-readonly="true"><div class="rateit-selected" style="height: 14px; width: 56px;"></div><div class="rateit-hover" style="height:14px"></div></div></div>
-								                        </div>
-								                        <div class="col-sm-8">
-								                          <div class="reviews">
-								                            (06 Reviews)
-								                          </div>
-								                        </div>
-								                      </div><!-- /.row -->
-								                      <div class="cart-product-info">
-								                                <span class="product-color">COLOR:<span>Blue</span></span>
-								                      </div>*}
-								                    </td>
-								                    {*<td class="cart-product-edit"><a href="#" class="product-edit">Edit</a></td>*}
-								                    <td class="cart-product-quantity">
-								                      <div class="quant-input">
-								                            {*<div class="arrows">
-								                              <div class="arrow plus gradient"><span class="ir"><i class="icon fa fa-sort-asc"></i></span></div>
-								                              <div class="arrow minus gradient"><span class="ir"><i class="icon fa fa-sort-desc"></i></span></div>
-								                            </div>*}
-								                            <input value="{$c.pqty}" type="text">
-								                        </div>
-								                    </td>
-								                    <td class="cart-product-sub-total"><span class="cart-sub-total-price">KShs. {$c.pprice}</span></td>
-								                    {assign var = t value = $c.pprice * $c.pqty}
-								                    <td class="cart-product-grand-total"><span class="cart-grand-total-price">KShs. {$t|number_format:2:".":","}</span></td>
-								                    {assign var = total value =  $total + ($c.pprice * $c.pqty)}
-								                  </tr>
-								                {foreachelse}
-								                  <p>Your cart is empty. Start shopping <a href="/">NOW!</a></p>
-								                {/foreach}
-								              </tbody><!-- /tbody -->
-								            </table><!-- /table -->
-								          </div>
-								        </div><!-- /.shopping-cart-table --> 
-								        <div class="col-md-4 col-sm-12"></div>
-								        <div class="col-md-4 col-sm-12"></div>
-								        <div class="col-md-4 col-sm-12 ">
-								          <div class="cart-shopping-total">
-								            <table class="table">
-								              <thead>
-								                <tr>
-								                  <th>
-								                    {*<div class="cart-sub-total">
-								                      Subtotal<span class="inner-left-md">$600.00</span>
-								                    </div>*}
-								                    <div class="cart-grand-total">
-								                      Grand Total<span class="inner-left-md">KShs. {$total|number_format:2:".":","}</span>
-								                    </div>
-								                  </th>
-								                </tr>
-								              </thead><!-- /thead -->
-								              <tbody>
-								                  <tr>
-								                    <td>
-								                      
-								                    </td>
-								                  </tr>
-								              </tbody><!-- /tbody -->
-								            </table><!-- /table -->
-								          </div>
-								        </div>
-								        <!-- /.cart-shopping-total -->      
-								    </div><!-- /.shopping-cart -->
-							    </div>
-					    	</div>						    	
-
-					        <div class="col-md-8 col-sm-12">
-								<h4 class="checkout-subtitle">
-									<input id="terms" type="checkbox" name="terms" required>
-									{*Create a modal for these terms and conditions*}
-									By placing order on this site, you accept our <a style="color: #5cb85c !important;" href="#">Terms &amp; Conditions</a>
-								</h4>
-								{*<div class="radio radio-checkout-unicase" style="margin-left: 10%;"> 
-							         
-							    </div>*}
-					        </div>
-					        <div class="col-md-4 col-sm-12">
-					        	<button type="submit" class="btn-upper btn btn-success checkout-page-button">
-					        		<i class="fa fa-dollar"></i> PLACE YOUR ORDER NOW <i class="fa fa-next"></i>
-					        	</button>
-					        </div>
-					  	</form>
-					  	
-					</div><!-- /.checkout-steps -->
+<!--Main index : End-->
+	<main class="main">
+		<section class="header-page">
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-3 hidden-xs">
+						<h1 class="mh-title">Checkout</h1>
+					</div>
+					<div class="breadcrumb-w col-sm-9">
+						<span class="hidden-xs">You are here:</span>
+						<ul class="breadcrumb">
+							<li>
+								<a href="/">Home</a>
+							</li>
+							<li>
+								<span>Checkout</span>
+							</li>
+						</ul>
+					</div>
 				</div>
-				{*<div class="col-md-4">
-					<!-- checkout-progress-sidebar -->
-					<div class="checkout-progress-sidebar ">
-						<div class="panel-group">
-							<div class="panel panel-default">
-								<div class="panel-heading">
-							    	<h4 class="unicase-checkout-title">Your Checkout Progress</h4>
-							    </div>
-							    <div class="">
-									<ul class="nav nav-checkout-progress list-unstyled">
-										<li><a href="#">Billing Address</a></li>
-										<li><a href="#">Shipping Address</a></li>
-										<li><a href="#">Shipping Method</a></li>
-										<li><a href="#">Payment Method</a></li>
-									</ul>		
+			</div>
+		</section>
+		<section id="checkout" class="pr-main">
+			<div class="container">	
+			<div class="col-md-12 col-sm-12 col-xs-12">
+				<div class="cart-top">
+					<img alt="Cart top banner" src="/cdn/imran/images/banner/cart/top-banner.jpg">
+				</div>
+			</div>	
+			<div class="cart-view-top">
+				<div class="col-md-6 col-sm-6 col-xs-12">
+					<h1>Shopping Cart</h1>
+				</div>
+				<div class="col-md-6 col-sm-6 col-xs-12 right">
+					<h1>Continue Shopping</h1>
+				</div>
+                <div id="login-pane" class="col-md-12 col-sm-12 col-xs-12">
+                	<p>Please fill in the fields below to complete your order.
+                		{*<a id="login-modal-trigger" href="#"> Already registered? Click here to login.</a>*}
+                	</p>
+                </div>
+			</div>
+			<div class="onepage">
+				<div  class="col-md-4 col-sm-6 col-xs-12">
+					<div id="div_billto">
+						<div class="pane round-box">
+							<h3 class="title"><span class="icon icon-one">1</span>BILLING INFO</h3>
+							<div class="pane-inner">
+								<ul id="table_billto" class="adminform user-details no-border">
+									<li class="short">
+										<div class="field-wrapper">
+											<label for="company_field" class="company">Company Name	</label>
+											<br>
+											<input type="text" maxlength="64" value="Shipment" size="30" name="company" id="company_field"> 
+										</div>
+									</li>
+
+									<li class="short right">
+										<div class="field-wrapper">
+											<label for="email_field" class="email">
+												E-Mail<em>*</em>					
+											</label>
+											<br>
+										
+											<input type="text" maxlength="100" class="required" value="" size="30" name="email" id="email_field"> 
+										</div>
+									</li>
+
+									<li class="short">
+										<div class="field-wrapper">
+											<label for="title_field" class="title">Title</label>
+										<br>
+										
+										<select style="width: 210px" class="vm-chzn-select" name="title" id="title">
+											<option selected="selected" value="">-- Select --</option>
+											<option value="Mr">Mr</option>
+											<option value="Mrs">Mrs</option>
+										</select>
+
+										</div>
+									</li>
+
+									<li class="short right">
+										<div class="field-wrapper">
+											<label for="first_name_field" class="first_name">First Name</label>
+										<br>
+										
+										<input type="text" maxlength="32" value="" size="30" name="first_name" id="first_name_field"> 
+										</div>
+									</li>
+
+									<li class="short">
+										<div class="field-wrapper">
+											<label for="middle_name_field" class="middle_name">
+												Middle Name					
+											</label>
+											<br>
+										
+											<input type="text" maxlength="32" value="" size="30" name="middle_name" id="middle_name_field"> 
+										</div>
+									</li>
+
+									<li class="short right">
+										<div class="field-wrapper">
+											<label for="last_name_field" class="last_name">
+												Last Name					
+											</label>
+											<br>
+											
+											<input type="text" maxlength="32" value="" size="30" name="last_name" id="last_name_field"> 
+										</div>
+									</li>
+
+									<li class="short">
+										<div class="field-wrapper">
+											<label for="zip_field" class="zip">
+												Zip / Postal Code<em>*</em>					
+											</label>
+											<br>
+										
+											<input type="text" maxlength="32" class="required" value="" size="30" name="zip" id="zip_field"> 
+										</div>
+									</li>
+
+									<li class="short right">
+										<div class="field-wrapper">
+											<label for="virtuemart_country_id_field" class="virtuemart_country_id">
+												Country<em>*</em>					
+											</label>
+											<br>
+											
+											<select style="width: 210px" class="vm-chzn-select required" name="virtuemart_country_id" id="virtuemart_country_id" onchange="loadstatebt(this)">
+												<option selected="selected" value="">-- Select --</option>
+												<option value="KE">Kenya</option>
+												<option value="UG">Uganda</option>
+											</select>
+										</div>
+									</li>
+									
+									<li class="short">
+										<div class="field-wrapper">
+											<label for="virtuemart_city" class="virtuemart_state_id">
+												City<em>*</em>					
+											</label>
+											<br>
+										
+											<select style="width: 210px" name="virtuemart_city" class="vm-chzn-select" id="virtuemart_city">
+												<option value="">-- Select --</option>
+											</select>
+										</div>
+									</li>
+									
+									<li class="short right">
+										<div class="field-wrapper">
+											<label for="virtuemart_state_id_field" class="virtuemart_state_id">
+												State / Province / Region<em>*</em>					
+											</label>
+											<br>
+										
+											<select style="width: 210px" name="virtuemart_state_id" class="vm-chzn-select" id="virtuemart_state_id">
+												<option value="">-- Select --</option>
+											</select>
+										</div>
+									</li>
+							
+									<li class="short">
+										<div class="field-wrapper">
+											<label for="phone_1_field" class="phone_1">
+												Phone					
+											</label>
+											<br>
+										
+											<input type="text" maxlength="32" value="" size="30" name="phone_1" id="phone_1_field"> 
+										</div>
+									</li>
+
+									<li class="short right">
+										<div class="field-wrapper">
+											<label for="phone_2_field" class="phone_2">
+												Mobile phone					
+											</label>
+											<br>
+										
+											<input type="text" maxlength="32" value="" size="30" name="phone_2" id="phone_2_field"> 
+										</div>
+									</li>
+
+									<li class="long">
+										<div class="field-wrapper">
+											<label for="address_1_field" class="address_1">
+												Address 1<em>*</em>
+											</label>
+											<br>
+										
+											<input type="text" maxlength="64" class="required" value="" size="30" name="address_1" id="address_1_field"> 
+										</div>
+									</li>
+															
+									<li class="long">
+										<div class="field-wrapper">
+											<label for="fax_field" class="fax">
+												Fax					
+											</label>
+											<br>
+										
+											<input type="text" maxlength="32" value="" size="30" name="fax" id="fax_field"> 
+										</div>
+									</li>
+								</ul>
+
+								<ul id="user-actions-trigger">
+									<li>
+										<input type="checkbox" id="register">
+										<label class="registers">Create an account for later use</label>
+										<ul id="user-register-fields">
+											<li class="short">
+												<div class="field-wrapper username">
+													<label for="username_field" class="username">
+														Username <em>*</em>
+													</label>
+													<br>
+													<input type="text" maxlength="25" value="" size="30" name="username" id="username_field"> 
+												</div>
+											</li>
+															
+											<li class="short">
+												<div class="field-wrapper name">
+													<label for="name_field" class="name">
+														Displayed Name <em>*</em>
+													</label>
+													<br>
+													<input type="text" maxlength="25" value="" size="30" name="name" id="name_field"> 
+												</div>
+											</li>
+															
+											<li class="short">
+												<div class="field-wrapper password">
+													<label for="password_field" class="password">
+														Password <em>*</em>
+													</label>
+													<br>
+													<input type="password" class="inputbox" size="30" name="password" id="password_field">
+
+												</div>
+											</li>
+															
+											<li class="short">
+												<div class="field-wrapper password2">
+													<label for="password2_field" class="password2">
+														Confirm Password <em>*</em>
+													</label>
+													<br>
+													<input type="password" class="inputbox" size="30" name="password2" id="password2_field">
+												</div>
+											</li>
+																																																																																					
+											<li class="long">
+												<div class="field-wrapper agreed">
+													<label for="agreed_field" class="agreed">
+														I agree to the Terms of Service <em>*</em>
+													</label>
+													<input type="checkbox" value="1" id="agreed_field" name="agreed">
+												</div>
+											</li>
+										</ul>
+									</li>	
+								</ul>
+
+							</div>
+						</div>
+					</div>
+					<!-- Cos 2 -->
+	                {*<div id="shipping_info_w">
+			    		<div id="div_shipto" class="shipping_info">
+							<div class="pane round-box">
+								<h3 class="title">
+									<span class="icon icon-two">2</span>
+									SHIPMENT ADDRESS		
+								</h3>
+
+								<div id="table_shipto" class="pane-inner">
+			                        <span class="check_stsaneasbt">
+			                        	<input type="checkbox" name="stsameasbt" id="STsameAsBT">
+			                            <label  class="registers" for="STsameAsBT">Ship to same address</label>
+			                        </span>
+									<ul id="table_shippingto" class="adminform user-details no-border">
+										<li class="short">
+											<div class="field-wrapper">
+												<label for="shipto_address_type_name_field" class="shipto_address_type_name">
+													Address Nickname					
+												</label>
+												<br>
+												<input type="text" maxlength="32" value="Shipment" size="30" name="shipto_address_type_name" id="shipto_address_type_name_field"> 
+											</div>
+										</li>
+
+										<li class="short right">
+											<div class="field-wrapper">
+												<label for="shipto_company_field" class="shipto_company">
+													Company Name					
+												</label>
+												<br>
+												<input type="text" maxlength="64" value="Shipment" size="30" name="shipto_company" id="shipto_company_field"> 
+											</div>
+										</li>
+
+										<li class="short">
+											<div class="field-wrapper">
+												<label for="shipto_first_name_field" class="shipto_first_name">
+													First Name					
+												</label>
+												<br>
+												<input type="text" maxlength="32" value="" size="30" name="shipto_first_name" id="shipto_first_name_field"> 
+											</div>
+										</li>
+
+										<li class="short right">
+											<div class="field-wrapper">
+												<label for="shipto_middle_name_field" class="shipto_middle_name">
+													Middle Name					
+												</label>
+												<br>
+												<input type="text" maxlength="32" value="" size="30" name="shipto_middle_name" id="shipto_middle_name_field"> 
+											</div>
+										</li>
+
+										<li class="short">
+											<div class="field-wrapper">
+												<label for="shipto_last_name_field" class="shipto_last_name">
+													Last Name					
+												</label>
+												<br>
+												<input type="text" maxlength="32" value="" size="30" name="shipto_last_name" id="shipto_last_name_field"> 
+											</div>
+										</li>
+
+										<li class="short right">
+											<div class="field-wrapper">
+												<label for="shipto_zip_field" class="shipto_zip">
+													Zip / Postal Code<em>*</em>					
+												</label>
+												<br>
+												<input type="text" maxlength="32" class="required" value="" size="30" name="shipto_zip" id="shipto_zip_field" onchange="nx.checkout.update_form();"> 
+											</div>
+										</li>
+
+										<li class="short">
+											<div class="field-wrapper">
+												<label for="shipto_virtuemart_country_id_field" class="shipto_virtuemart_country_id">
+													Country<em>*</em>					
+												</label>
+												<br>
+												<select style="width: 210px" class="vm-chzn-select required" name="shipto_virtuemart_country_id" id="shipto_virtuemart_country_id" onchange="loadstatest(this)">
+													<option selected="selected" value="">-- Select --</option>
+													<option value="1">Afghanistan</option>
+													<option value="2">Albania</option>
+													<option value="3">Algeria</option>
+													<option value="4">American Samoa</option>
+													<option value="5">Andorra</option>
+												</select>
+											</div>
+										</li>
+
+										<li class="short right">
+											<div class="field-wrapper">
+												<label for="shipto_virtuemart_state_id_field" class="shipto_virtuemart_state_id">
+													State / Province / Region<em>*</em>					
+												</label>
+												<br>
+												<select style="width: 210px" name="shipto_virtuemart_state_id" class="vm-chzn-select" id="shipto_virtuemart_state_id" onchange="nx.checkout.update_form();">
+													<option value="">-- Select --</option>
+												</select>
+											</div>
+										</li>
+
+										<li class="short">
+											<div class="field-wrapper">
+												<label for="shipto_phone_1_field" class="shipto_phone_1">
+													Phone					
+												</label>
+												<br>
+												<input type="text" maxlength="32" value="" size="30" name="shipto_phone_1" id="shipto_phone_1_field"> 
+											</div>
+										</li>
+
+										<li class="short right">
+											<div class="field-wrapper">
+												<label for="shipto_phone_2_field" class="shipto_phone_2">
+													Mobile phone					
+												</label>
+												<br>
+												<input type="text" maxlength="32" value="" size="30" name="shipto_phone_2" id="shipto_phone_2_field"> 
+											</div>
+										</li>
+
+										<li class="long">
+											<div class="field-wrapper">
+												<label for="shipto_address_1_field" class="shipto_address_1">
+													Address 1<em>*</em>					
+												</label>
+												<br>
+												<input type="text" maxlength="64" class="required" value="" size="30" name="shipto_address_1" id="shipto_address_1_field"> 
+											</div>
+										</li>
+
+										<li class="long">
+											<div class="field-wrapper">
+												<label for="shipto_fax_field" class="shipto_fax">
+													Fax					
+												</label>
+												<br>
+												<input type="text" maxlength="32" value="" size="30" name="shipto_fax" id="shipto_fax_field"> 
+											</div>
+										</li>
+									</ul>
 								</div>
 							</div>
 						</div>
-					</div> 
-					<!-- checkout-progress-sidebar -->				
-				</div>*}
-			</div><!-- /.row -->
-		</div><!-- /.checkout-box -->
-		<!-- ============================================== BRANDS CAROUSEL ============================================== -->
-		<div id="brands-carousel" class="logo-slider wow fadeInUp animated" style="visibility: visible; animation-name: fadeInUp;">
+	                </div>*}
+	               <!-- shipping_info -->
+				</div>
 
-				<div class="logo-slider-inner">	
-					<div id="brand-slider" class="owl-carousel brand-slider custom-carousel owl-theme" style="opacity: 1; display: block;">
-						<div class="owl-wrapper-outer"><div class="owl-wrapper" style="width: 3860px; left: 0px; display: block;"><div class="owl-item" style="width: 193px;"><div class="item">
-							<a href="#" class="image">
-								<img src="/cdn/assets/images/brands/brand1.png" alt="">
-							</a>	
-						</div></div><div class="owl-item" style="width: 193px;"><div class="item">
-							<a href="#" class="image">
-								<img src="/cdn/assets/images/brands/brand2.png" alt="">
-							</a>	
-						</div></div><div class="owl-item" style="width: 193px;"><div class="item">
-							<a href="#" class="image">
-								<img src="/cdn/assets/images/brands/brand3.png" alt="">
-							</a>	
-						</div></div><div class="owl-item" style="width: 193px;"><div class="item">
-							<a href="#" class="image">
-								<img src="/cdn/assets/images/brands/brand4.png" alt="">
-							</a>	
-						</div></div><div class="owl-item" style="width: 193px;"><div class="item">
-							<a href="#" class="image">
-								<img src="/cdn/assets/images/brands/brand5.png" alt="">
-							</a>	
-						</div></div><div class="owl-item" style="width: 193px;"><div class="item">
-							<a href="#" class="image">
-								<img src="/cdn/assets/images/brands/brand6.png" alt="">
-							</a>	
-						</div></div><div class="owl-item" style="width: 193px;"><div class="item">
-							<a href="#" class="image">
-								<img src="/cdn/assets/images/brands/brand2.png" alt="">
-							</a>	
-						</div></div><div class="owl-item" style="width: 193px;"><div class="item">
-							<a href="#" class="image">
-								<img src="/cdn/assets/images/brands/brand4.png" alt="">
-							</a>	
-						</div></div><div class="owl-item" style="width: 193px;"><div class="item">
-							<a href="#" class="image">
-								<img src="/cdn/assets/images/brands/brand1.png" alt="">
-							</a>	
-						</div></div><div class="owl-item" style="width: 193px;"><div class="item">
-							<a href="#" class="image">
-								<img src="/cdn/assets/images/brands/brand5.png" alt="">
-							</a>	
-						</div></div></div></div><!--/.item-->
+				<div class="col-md-8 col-sm-6 col-xs-12">
+            		<div id="right-pane-top" class="col-md-12 col-sm-12 col-xs-12">
+		                <div id="shipping_method" class="col-md-6 col-sm-12 col-xs-12">
+							<div class="shipment-pane">
+								<div class="pane round-box">
+									<h3 class="title">
+										<span class="icon icon-three">2</span>
+										Shipping method		
+									</h3>
+									<div class="pane-inner" style="visibility: visible;">
+										Select shipment
+										<fieldset id="shipments">
+											<input type="radio" value="1" id="shipment_id_1" name="virtuemart_shipmentmethod_id" checked="checked">
+											<label for="shipment_id_1">
+												<span class="vmshipment">
+													<span class="vmshipment_name">Inranma</span>
+												</span>
+											</label>
+											{*<br>
+											<input type="radio" value="2" id="shipment_id_2" name="virtuemart_shipmentmethod_id">
+											<label for="shipment_id_2">
+												<span class="vmshipment">
+													<span class="vmshipment_name">Printmart</span>
+												</span>
+											</label>*}
+											<br>
+										</fieldset>
+									</div>
+								</div>
+							</div>
+						</div><!-- shipping_method -->
 
-						<!--/.item-->
+		                <div id="payment_method" class="col-md-6 col-sm-12 col-xs-12">
+							<div class="payment-pane">
+								<div class="pane round-box">
+									<h3 class="title">
+										<span class="icon icon-four">4</span>
+										Payment method		
+									</h3>
+									<div class="pane-inner">
+										Select payment method
+										<fieldset id="payments">
+											<input type="radio" value="cod" id="payment_id_1" name="virtuemart_paymentmethod_id" checked="checked">
+											<label for="payment_id_1">
+												<span class="vmpayment">
+													<span class="vmpayment_name">
+														<img width="99" height="51" src="/cdn/imran/images/pay/cod.png">
+														<!-- Cash On Delivery -->
+													</span>
+												</span>
+											</label><br>
 
-						<!--/.item-->
+											<input type="radio" value="paypal" id="payment_id_2" name="virtuemart_paymentmethod_id">
+											<label for="payment_id_2">
+												<span class="vmpayment">
+													<span class="vmpayment_name">
+														<img width="99" height="69" src="/cdn/imran/images/pay/paypal.png">
+														<!-- Paypal -->
+													</span>
+												</span>
+											</label>
+										</fieldset>		
+									</div>
+								</div>
+							</div>
+		                </div><!-- payment_method -->
+		                <div class="delivery-time-pane col-md-6 col-sm-12 col-xs-12">
+	    					<div class="pane round-box">
+						        <h3 class="title">
+						            <span class="icon icon-five">3</span>
+						            Delivery time        
+						        </h3>
+						        <div class="pane-inner">
+							        <!-- show delivery date -->
+									<div class="delivery date">
+										<h2>Select Delivey Date </h2>		
+										<div class="input-date">
+										<input id="delivery_date_on" readonly="readonly" name="delivery_date" value="2015-05-10" size="10" class="hasDatepicker">
+										To 
+										<input id="delivery_date_off" readonly="readonly" name="delivery_date" value="2015-05-15" size="10" class="hasDatepicker">
+										</div>
+									</div>
+		        
+									<!-- enable show delivery time -->
+									<div class="delivery time">		
+										<h2>Select Delivery Time</h2>			
+										<div class="input-time">
+											<input readonly="readonly" value="08:15" id="delivery_time_on" name="delivery_time" size="10" class="hasDatepicker">
+											To
+											<input readonly="readonly" value="08:50" id="delivery_time_off" name="delivery_time" size="10" class="hasDatepicker">
+										</div>
+									</div>
+								</div>        
+	    					</div>
+	    				</div>  
+					</div>
+				</div>
+			<div id="checkfull" class="col-md-8 col-sm-12 col-xs-12">
+				<div  class="col-md-12 col-sm-12 col-xs-12" >
+				 <!-- render layout -->
+			    <fieldset class="round-box" id="cart-contents">
+					<h3 class="title"><span class="icon fa fa-check"></span>ORDER REVIEWS</h3>
+					<table cellspacing="0" cellpadding="0" border="0" class="cart-summary no-border">
+						<tbody>
+							<tr clas="top-header">
+								<th align="left" class="th-name">Products Name</th>
+								<th width="10%" class="th-price">Price</th>
+								{*<th width="10%" class="th-tax"><span class="priceColor2">Tax</span></th>*}
+								<th width="15%"  class="th-quanlity">Quanlity</th>
+								{*<th width="15%" class="th-discount"><span class="priceColor2">Action</span></th>*}
+								<th width="15%" align="left" class="th-total th-last">SubTotal</th>
+							</tr>
 
-						<!--/.item-->
+							{foreach $cart as $c}
+								<tr valign="top" id="product_row_0" class="product-detail-row product-detail-last-row sectiontableentry1">
+									<td align="left" class="pro_name">
+										<img width="99" height="51" class="cart-images" src="/products/{$c.pimage}">
+										<a class="product-name" href="/product/info/{$c.purl}">{$c.pname|capitalize}</a>
+									</td>
+									<td align="left" class="base-price">
+										<div class="PricebasePrice vm-display vm-price-value">
+											<span class="vm-price-desc"></span>
+											<span class="PricebasePrice">{$app.currency}. {$c.pprice|number_format:2:".":","}</span>
+										</div>	
+									</td>
+									{*<td align="right" class="pro_tax">
+										<span class="priceColor2">
+											<div class="PricetaxAmount vm-display vm-price-value">
+												<span class="vm-price-desc"></span>
+												<span class="PricetaxAmount">$11.17</span>
+											</div>
+										</span>
+									</td>*}
+									<td align="left" class="product-quanlity">
+										<input value="{$c.pqty}" type="text" id="quantity_0" value="1" maxlength="4" size="3" name="quantity[0]" class="quantity-input js-recalculate" title="Update Quantity In Cart">
+									</td>
+													
+									{*<td align="left" class="product-quanlity action">
+										<a data-pid="0" href="#" align="middle" title="DUpdate Quantity In Cart" name="update" class="fa fa-refresh"> </a>	
+										<a data-pid="0" href="#" align="middle" title="Delete Product From Cart" name="remove" class="fa fa-times-circle"> </a>	
+									</td>*}
 
-						<!--/.item-->
+									<td align="right" id="subtotal_with_tax_0" colspan="0" class="sub-total td-last">
+										<span class="line-through">
+											{assign var = t value = $c.pprice * $c.pqty}
+											{$app.currency}. {$t|number_format:2:".":","}
+										</span>
+									</td>
+								</tr>
+							{/foreach}
+								
+							<!--Begin of SubTotal, Tax, Shipment, Coupon Discount and Total listing -->
+				            <!--  Total -->
+						   	<tr class="pr-total">
+							   <td colspan="6">
+								   <table>                             
+										<tbody>
+											{*<tr class="first">
+												<td>SubTotal:</td>
+												<td class="pr-right"><div class="PricesalesPrice vm-display vm-price-value"><span class="vm-price-desc"></span><span class="PricesalesPrice">$122.90</span></div></td>
+											</tr>
+											<tr>
+												<td>Discount:</td>
+												<td class="pr-right">
+												  <span id="total_amount" class="priceColor2">$-30.00</span>                           
+												</td>
+											</tr>
+											<tr>
+												<td>Tax:</td>
+												<td class="pr-right"><span id="total_tax" class="priceColor2">$11.17</span></td>
+											</tr>*}
+											<tr>
+												<td>Shipment:</td>
+												<td class="pr-right"><span id="shipment" class="priceColor2">0</span></td>
+											</tr>
+																			<tr class="last">
+												<td>Total:</td>
+												<td class="pr-right"><strong id="bill_total">{$app.currency}. {$totalAmount|number_format:2:".":","}</strong></td>
+											</tr>
+										</tbody>
+								   </table>
+								</td>
+							</tr>
+						   	<!--  End Total -->
+							{*<tr class="coupon-pane">
+								<td align="left" class="border-radius-lb" colspan="6">
+									<input type="text" onfocus="if(this.value=='Enter your Coupon code') this.value='';" onblur="if(this.value=='') this.value='Enter your Coupon code';" value="Enter your Coupon code" alt="Enter your Coupon code" class="coupon" maxlength="50" size="20" id="coupon_code" name="coupon_code">
+									<span class="details-button">
+										<input type="button" value="Save" title="Save" class="details-button" id="coupon_code_button">
+									</span>
+								</td>
+							</tr>*}
+						</tbody>
+					</table>
+				</fieldset>
 
-						<!--/.item-->
+				<div id="right-pane-bottom">
+				    <div class="customer-note">
+				        <p class="comment">Notes and special requests</p>
+						<textarea class="inputbox" rows="1" cols="60" name="customer_note" id="customer_note_field"></textarea>
+					</div>
+					<fieldset class="vm-fieldset-tos">
+						<input id="tos" class="terms-of-service" type="checkbox"  name="tos" value="1">
+						<span>Click here to read terms of service and check the box to accept them.</span>
+						<div class="checkout-button-top">
+						<a href="#" class="vm-button-correct"><span>Confirm Purchase</span></a>
+						</div>
+				     </fieldset>
+				</div>
+				<!-- right-pane-bottom -->
+			</div>
+		</div>
+		</section>
+	</main><!--Main index : End-->
 
-						<!--/.item-->
-
-						<!--/.item-->
-
-						<!--/.item-->
-
-						<!--/.item-->
-				    <div class="owl-controls clickable"><div class="owl-buttons"><div class="owl-prev"></div><div class="owl-next"></div></div></div></div><!-- /.owl-carousel #logo-slider -->
-				</div><!-- /.logo-slider-inner -->
-			
-		</div><!-- /.logo-slider -->
-		<!-- ============================================== BRANDS CAROUSEL : END ============================================== -->
-	</div>
-	<!-- /.container -->
-</div>
-
-{include file="emboga/footer.tpl"}
+{include file="shared/site_footer.tpl"}

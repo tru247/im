@@ -18,7 +18,7 @@
     </section>
 
     <!--Home Category : Begin-->
-    <section class="home-category">
+    {*<section class="home-category">
       <div class="container">
         <div class="row"> 
           <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 block block-left">
@@ -77,105 +77,7 @@
           </div> 
         </div>
       </div>
-    </section>
-
-    <!--Home Trust : Begin-->
-    <section class="trust-w hidden-xs">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-3 col-sm-6 col-xs-6 block-trust trust-col-quantity">
-            <div class="tr-icon"><i class="fa fa-thumbs-up"></i></div>
-            <div class="tr-text">
-              <h3>Quality Printing</h3>
-              <span class="tr-line"></span>
-              <p>Bright inks. Thick Paper. Precise cuts. We believe that quality printing matters.  That quality printing matters.</p>
-              <a href="#" class="btn-readmore" title="Quality Printing">Read more</a>
-            </div>
-          </div>
-          <div class="col-md-3 col-sm-6 col-xs-6 block-trust trust-col-time-delivery">
-            <div class="tr-icon"><i class="fa fa-paper-plane"></i></div>
-            <div class="tr-text">
-              <h3>Timely Delivery</h3>
-              <span class="tr-line"></span>
-              <p>No printer is faster. Order today by 8:00pm EST and you can even get it tomorrow.</p>
-              <a href="#" class="btn-readmore" title="Timely Delivery">Read more</a>
-            </div>
-          </div>
-          <div class="col-md-3 col-sm-6 col-xs-6 block-trust trust-col-eco-minded">
-            <div class="tr-icon"><i class="fa fa-leaf"></i></div>
-            <div class="tr-text">
-              <h3>Eco-Minded</h3>
-              <span class="tr-line"></span>
-              <p>
-                Overnight Prints is the greenest online printer in the world. See our Waterless technology. 
-              </p>
-              <a href="#" class="btn-readmore" title="Eco-Minded">Read more</a>
-            </div>
-          </div>
-          <div class="col-md-3 col-sm-6 col-xs-6 block-trust trust-col-eco-money">
-            <div class="tr-icon"><i class="fa fa-money"></i></div>
-            <div class="tr-text">
-              <h3>Money Back Guaranteed</h3>
-              <span class="tr-line"></span>
-              <p>
-                Most sellers work with buyers to quickly resolve issues, but if a solution isn't reached, we can help.
-              </p>
-              <a href="#" class="btn-readmore" title="Eco-Minded">Read more</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section><!--Home Trust : End-->
-
-    <!--Home Promotions Products : Begin -->
-    {*<section class="home-promotion-product home-product parten-bg">
-      <div class="container">
-        <div class="row">
-          <div class="block-title-w">
-            <h2 class="block-title">Promotions Products</h2> 
-            <span class="icon-title">
-              <span></span>
-              <i class="fa fa-star"></i>
-            </span>
-          </div>
-          <ul class="slider-w slider-owl">
-            <li class="pro-item">
-              <div class="product-image-action">
-                <img src="/cdn/imran/images/product/263x263/2.jpg" alt="New Brochures">
-                <div class="action">
-                  <button type="button" data-toggle="tooltip" data-placement="top" title="Add-to-cart" class="add-to-cart gbtn">
-                    <i class="fa fa-shopping-cart"></i> 
-                  </button>
-                  <a href="#" data-toggle="tooltip" data-placement="top" title="Wishlist" class="add-to-wishlist">
-                    <i class="fa fa-heart"></i>
-                  </a>
-                  <a href="#" data-toggle="tooltip" data-placement="top" title="compare" class="add-to-compare">
-                    <i class="fa fa-refresh"></i> 
-                  </a> 
-                  <a href="#" data-toggle="tooltip" data-placement="top" title="Quickview" class="quick-view">
-                    <i class="fa fa-eye"></i>
-                  </a>
-                </div>
-              </div>
-              <div class="product-info">
-                <a href="detail.html" title="product" class="product-name">New Brochures</a>
-                <div class="price-box">
-                  <span class="normal-price">$ 9.80</span>
-                </div>
-                <div class="rating-box">  
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                </div>
-              </div>
-            </li>
-          </ul>
-        </div>
-      </div>
     </section>*}
-    <!--Home Promotions Products : End -->
 
     <!--Home New print Template : Begin -->
     <section class="home-new-product home-product parten-bg">
@@ -205,7 +107,7 @@
                                 <div class="info">
                                     <div class="row">
                                         <div class="price col-md-6">
-                                            <h5>{$p.name|Capitalize}</h5>
+                                            <h5>{$p.name|truncate:30}</h5>
                                         </div>
                                         <div class="rating col-md-6">
                                             <h5 class="price-text-color" style="font-size: 12px;margin-top: 10px;font-weight: bold;">
@@ -229,8 +131,9 @@
                                             </form>
                                         </p>
                                         <p class="btn-details">
-                                          <i class="fa fa-list"></i>
-                                          <a href="/product/info/{$p.url}" class="" style="color: #0EADA9;">More details</a>
+                                          <a href="/product/info/{$p.url}" class="" style="color: #0EADA9;">
+                                            <i class="fa fa-list"></i>
+                                          </a>
                                         </p>
                                     </div>
                                     <div class="clearfix">
@@ -247,248 +150,53 @@
       </div>
     </section><!--Home New Products : End -->
 
-    <!--Home blog : Begin -->
-    <section class="home-blog">
+    <!--Home Trust : Begin-->
+    <section class="trust-w hidden-xs">
       <div class="container">
         <div class="row">
-          <div class="block-title-w">
-            <h2 class="block-title">recent blog post</h2> 
-            <span class="icon-title">
-              <span></span>
-              <i class="fa fa-star"></i>
-            </span> 
+          <div class="col-md-3 col-sm-6 col-xs-6 block-trust trust-col-quantity">
+            <div class="tr-icon"><i class="fa fa-thumbs-up"></i></div>
+            <div class="tr-text">
+              <h3>Quality Printing</h3>
+              <span class="tr-line"></span>
+              <p>Bright inks. Thick Paper. Precise cuts. We believe that quality printing matters.  That quality printing matters.</p>
+              <a href="#" class="btn-readmore" title="Quality Printing">Read more</a>
+            </div>
           </div>
-          <div class="blog-content-w" id="blog-content-w">
-            <div class="slider">
-              <div class="slider-inner">
-                <div class="wrap-item"> 
-                  <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 item">
-                    <div class="inner"> 
-                      <a class="image" href="#">
-                        <img src="/cdn/imran/images/blog/1.jpg" alt="blog-01"/>
-                      </a>
-                      <div class="info">
-                        <div class="title">
-                          <a href="#">Happy Holidays Photo Cards</a>
-                        </div>
-                        <div class="sub-title">
-                          <p>
-                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam...
-                          </p>
-                        </div>
-                        <a href="#" class="read-more">Read more</a>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 item item-even">
-                    <div class="inner">
-                      <div class="info">
-                        <div class="title">
-                          <a href="#">Happy Holidays Photo Cards</a>
-                        </div>
-                        <div class="sub-title">
-                          <p>
-                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam...
-                          </p>
-                        </div>
-                        <a href="#" class="read-more">Read more</a>
-                      </div>
-                      <a class="image" href="#">
-                        <img src="/cdn/imran/images/blog/2.jpg" alt="blog-01"/>
-                      </a>
-                    </div>
-                  </div>
-                  <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 item">
-                    <div class="inner">
-                      <a class="image" href="#">
-                        <img src="/cdn/imran/images/blog/3.jpg" alt="blog-01"/>
-                      </a>
-                      <div class="info">
-                        <div class="title">
-                          <a href="#">Happy Holidays Photo Cards</a>
-                        </div>
-                        <div class="sub-title">
-                          <p>
-                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam...
-                          </p>
-                        </div>
-                        <a href="#" class="read-more">Read more</a>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 item item-even">
-                    <div class="inner">
-                      <div class="info">
-                        <div class="title">
-                          <a href="#">Happy Holidays Photo Cards</a>
-                        </div>
-                        <div class="sub-title">
-                          <p>
-                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam...
-                          </p>
-                        </div>
-                        <a href="#" class="read-more">Read more</a>
-                      </div>
-                      <a class="image" href="#">
-                        <img src="/cdn/imran/images/blog/4.jpg" alt="blog-01"/>
-                      </a>
-                    </div>
-                  </div>
-                </div>
-                <div class="wrap-item"> 
-                  <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 item">
-                    <div class="inner"> 
-                      <a class="image" href="#">
-                        <img src="/cdn/imran/images/blog/1.jpg" alt="blog-01"/>
-                      </a>
-                      <div class="info">
-                        <div class="title">
-                          <a href="#">Happy Holidays Photo Cards</a>
-                        </div>
-                        <div class="sub-title">
-                          <p>
-                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam...
-                          </p>
-                        </div>
-                        <a href="#" class="read-more">Read more</a>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 item item-even">
-                    <div class="inner">
-                      <div class="info">
-                        <div class="title">
-                          <a href="#">Happy Holidays Photo Cards</a>
-                        </div>
-                        <div class="sub-title">
-                          <p>
-                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam...
-                          </p>
-                        </div>
-                        <a href="#" class="read-more">Read more</a>
-                      </div>
-                      <a class="image" href="#">
-                        <img src="/cdn/imran/images/blog/2.jpg" alt="blog-01"/>
-                      </a>
-                    </div>
-                  </div>
-                  <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 item">
-                    <div class="inner">
-                      <a class="image" href="#">
-                        <img src="/cdn/imran/images/blog/3.jpg" alt="blog-01"/>
-                      </a>
-                      <div class="info">
-                        <div class="title">
-                          <a href="#">Happy Holidays Photo Cards</a>
-                        </div>
-                        <div class="sub-title">
-                          <p>
-                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam...
-                          </p>
-                        </div>
-                        <a href="#" class="read-more">Read more</a>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 item item-even">
-                    <div class="inner">
-                      <div class="info">
-                        <div class="title">
-                          <a href="#">Happy Holidays Photo Cards</a>
-                        </div>
-                        <div class="sub-title">
-                          <p>
-                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam...
-                          </p>
-                        </div>
-                        <a href="#" class="read-more">Read more</a>
-                      </div>
-                      <a class="image" href="#">
-                        <img src="/cdn/imran/images/blog/4.jpg" alt="blog-01"/>
-                      </a>
-                    </div>
-                  </div>
-                </div>
-                <div class="wrap-item"> 
-                  <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 item">
-                    <div class="inner"> 
-                      <a class="image" href="#">
-                        <img src="/cdn/imran/images/blog/1.jpg" alt="blog-01"/>
-                      </a>
-                      <div class="info">
-                        <div class="title">
-                          <a href="#">Happy Holidays Photo Cards</a>
-                        </div>
-                        <div class="sub-title">
-                          <p>
-                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam...
-                          </p>
-                        </div>
-                        <a href="#" class="read-more">Read more</a>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 item item-even">
-                    <div class="inner">
-                      <div class="info">
-                        <div class="title">
-                          <a href="#">Happy Holidays Photo Cards</a>
-                        </div>
-                        <div class="sub-title">
-                          <p>
-                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam...
-                          </p>
-                        </div>
-                        <a href="#" class="read-more">Read more</a>
-                      </div>
-                      <a class="image" href="#">
-                        <img src="/cdn/imran/images/blog/2.jpg" alt="blog-01"/>
-                      </a>
-                    </div>
-                  </div>
-                  <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 item">
-                    <div class="inner">
-                      <a class="image" href="#">
-                        <img src="/cdn/imran/images/blog/3.jpg" alt="blog-01"/>
-                      </a>
-                      <div class="info">
-                        <div class="title">
-                          <a href="#">Happy Holidays Photo Cards</a>
-                        </div>
-                        <div class="sub-title">
-                          <p>
-                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam...
-                          </p>
-                        </div>
-                        <a href="#" class="read-more">Read more</a>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 item item-even">
-                    <div class="inner">
-                      <div class="info">
-                        <div class="title">
-                          <a href="#">Happy Holidays Photo Cards</a>
-                        </div>
-                        <div class="sub-title">
-                          <p>
-                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam...
-                          </p>
-                        </div>
-                        <a href="#" class="read-more">Read more</a>
-                      </div>
-                      <a class="image" href="#">
-                        <img src="/cdn/imran/images/blog/4.jpg" alt="blog-01"/>
-                      </a>
-                    </div>
-                  </div>
-                </div> 
-              </div>
+          <div class="col-md-3 col-sm-6 col-xs-6 block-trust trust-col-time-delivery">
+            <div class="tr-icon"><i class="fa fa-paper-plane"></i></div>
+            <div class="tr-text">
+              <h3>Timely Delivery</h3>
+              <span class="tr-line"></span>
+              <p>No printer is faster. Order today by 8:00pm EST and you can even get it tomorrow.</p>
+              <a href="#" class="btn-readmore" title="Timely Delivery">Read more</a>
+            </div>
+          </div>
+          <div class="col-md-3 col-sm-6 col-xs-12 block-trust trust-col-eco-minded">
+            <div class="tr-icon"><i class="fa fa-leaf"></i></div>
+            <div class="tr-text">
+              <h3>Eco-Minded</h3>
+              <span class="tr-line"></span>
+              <p>
+                Overnight Prints is the greenest online printer in the world. See our Waterless technology. 
+              </p>
+              <a href="#" class="btn-readmore" title="Eco-Minded">Read more</a>
+            </div>
+          </div>
+          <div class="col-md-3 col-sm-6 col-xs-12 block-trust trust-col-eco-money">
+            <div class="tr-icon"><i class="fa fa-money"></i></div>
+            <div class="tr-text">
+              <h3>Money Back Guaranteed</h3>
+              <span class="tr-line"></span>
+              <p>
+                Most sellers work with buyers to quickly resolve issues, but if a solution isn't reached, we can help.
+              </p>
+              <a href="#" class="btn-readmore" title="Eco-Minded">Read more</a>
             </div>
           </div>
         </div>
       </div>
-    </section>
+    </section><!--Home Trust : End-->
 
     <!--Home make print : Begin -->
     <section class="home-make-print">
@@ -502,7 +210,7 @@
             </span> 
           </div><!--make print Title : End -->
           <div class="print-content">
-            <div class="col-md-4 col-sm-4 print-block print-block-left">
+            <div class="col-md-4 col-sm-3 print-block print-block-left">
               <div class="w-print-block frist">
                 <div class="print-icon">
                   <i class="fa fa-hand-o-up"></i>
@@ -519,7 +227,7 @@
                 </div>
               </div>
             </div>
-            <div class="col-md-4 col-sm-4 print-block print-block-center">
+            <div class="col-md-4 col-sm-3 print-block print-block-center">
               <div class="w-print-block">
                 <div class="print-icon">
                   <i class="fa fa-file-text-o"></i> 
@@ -536,7 +244,7 @@
                 </div>
               </div>
             </div>
-            <div class="col-md-4 col-sm-4 print-block print-block-right">
+            <div class="col-md-4 col-sm-3 print-block print-block-right">
               <div class="w-print-block">
                 <div class="print-icon">
                   <i class="fa fa-shopping-cart"></i>

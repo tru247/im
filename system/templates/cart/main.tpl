@@ -27,7 +27,7 @@
         <!--Cart top banner -->
         <div class="row">
           <div class="col-md-12 cart-banner-top hidden-xs">
-            <a href="#" title="cart top banner">
+            <a href="/" title="cart top banner">
               <img src="/cdn/imran/images/banner/cart/top-banner.jpg" alt="Cart top banner" />
             </a>
           </div>
@@ -52,7 +52,7 @@
             <p class="visible-xs mobile-cart-title">There are {$pCounter|default: 0} items in your cart.</p>
             <form >
               <div class="table-responsive">
-                <table cellspacing="0" class="table-cart table">
+                <table id="my-cart-tbl" cellspacing="0" class="table-cart table">
                     <thead class="hidden-xs">
                         <tr>
                             <th>#</th>
@@ -70,25 +70,25 @@
                                 <input type="checkbox" name="purl" value="{$c.pid}">
                               </td>
                               <td class="product-info">
-                                  <div class="product-image-col">
-                                    <a class="product-image" title="product card">
-                                      <img src="/products/{$c.pimage}" alt="{$c.pname}">
+                                <div class="product-image-col">
+                                  <a class="product-image" title="product card">
+                                    <img src="/products/{$c.pimage}" alt="{$c.pname}">
+                                  </a>
+                                  {*<div class="product-action hidden-xs">
+                                    <a href="#" class="cart-edit" title="Edit Product">
+                                            <i class="fa fa-pencil-square-o"></i>
                                     </a>
-                                    {*<div class="product-action hidden-xs">
-                                      <a href="#" class="cart-edit" title="Edit Product">
-                                              <i class="fa fa-pencil-square-o"></i>
-                                      </a>
-                                      <a href="#" class="cart-delete" title="Delete Product">
-                                              <i class="fa fa-times"></i>
-                                      </a>
-                                      <a href="#" class="cart-update" title="Update Product">
-                                              <i class="fa fa-refresh"></i>
-                                      </a>
-                                    </div>*}
-                                  </div>
-                                  <div class="product-info-col">
-                                    <h3 class="product-name">{$c.pname|capitalize}</h3>
-                                  </div>
+                                    <a href="#" class="cart-delete" title="Delete Product">
+                                            <i class="fa fa-times"></i>
+                                    </a>
+                                    <a href="#" class="cart-update" title="Update Product">
+                                            <i class="fa fa-refresh"></i>
+                                    </a>
+                                  </div>*}
+                                </div>
+                                <div class="product-info-col">
+                                  <h3 class="product-name">{$c.pname|capitalize}</h3>
+                                </div>
                               </td>
                               <td class="product-price hidden-xs">
                                   <span>{$app.currency} {$c.pprice|number_format:2:".":","}</span>
@@ -105,7 +105,7 @@
                               </td>*}
                               <td class="product-subtotal hidden-xs">
                                 {assign var = t value = $c.pprice * $c.pqty}
-                                <span>{$app.currency} {$t|number_format:2:".":","}</span>
+                                <span>{$app.currency}. {$t|number_format:2:".":","}</span>
                               </td>
                           </tr>
                         {/foreach}
@@ -113,20 +113,19 @@
                 </table>
               </div>
               {*
-                  <div class="row update-wishlist">
-                    <div class="col-sm-12 hidden-xs">
-                      <button type="button" name="update-wishlist" class="gbtn btn-update-wishlist">
-                        <i class="fa fa-refresh"></i>
-                        Update Cart
-                      </button>
-                    </div>
+                <div class="row update-wishlist">
+                  <div class="col-sm-12 hidden-xs">
+                    <button type="button" name="update-wishlist" class="gbtn btn-update-wishlist">
+                      <i class="fa fa-refresh"></i>
+                      Update Cart
+                    </button>
                   </div>
+                </div>
                *}
               <div class="row cart-bottom">
-                  <!--Estimate Shipping : Begin-->
-                  
+                  <!--Estimate Shipping : Begin-->                  
                   <div class="col-sm-4 estimate-shipping clearfix">
-                   {* <h3>Estimate Shipping And Tax</h3>
+                   {*<h3>Estimate Shipping And Tax</h3>
                     <p>Enter your destination to get a shipping estimate.</p>
                     <form action="#" method="POST" name="estimate-shipping">*
                       <div class="form-group">
@@ -185,7 +184,12 @@
                         <span class="sub-value">{$app.currency}. {$le_grand_total|number_format:2:".":","}</span>
                       </li>
                     </ul>
-                    <button type="button" class="gbtn btn-checkout">Proceed Checkout</button>
+                    <button type="submit" class="gbtn btn-checkout">
+                      <a href="/cart/checkout" class="gbtn btn-checkout">
+                        <i class="fa fa-refresh"></i>
+                        Checkout Order
+                      </a>
+                    </button>
                   </div>
               </div>
             </form>

@@ -204,8 +204,9 @@
   <script type="text/javascript" src="/cdn/imran/js/slideshow/jquery.themepunch.plugins.min.js"></script> 
   <script type="text/javascript" src="/cdn/imran/js/validator.min.js"></script>     
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script type="text/javascript" src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
   <script type="text/javascript" src="/cdn/imran/js/theme-home.js"></script> 
-  <script type="text/javascript" src="/cdn/imran/js/trucommerce.js"></script> 
+  <script type="text/javascript" src="/cdn/imran/js/trucommerce.js"></script>
   {literal}
     <script type="text/javascript">
       $('#carousel-example-generic').on('slide.bs.carousel', function () {
@@ -213,6 +214,8 @@
               $('.carousel').carousel('next');
           }, 5000);
       });
+
+      $('#my-cart-tbl').DataTable();
     </script>
 
     <!-- Portfolio -->
