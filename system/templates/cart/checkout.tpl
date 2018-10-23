@@ -34,7 +34,9 @@
 					<h1>Shopping Cart</h1>
 				</div>
 				<div class="col-md-6 col-sm-6 col-xs-12 right">
-					<h1>Continue Shopping</h1>
+					<h1>
+						<a href="/">Continue Shopping</a>
+					</h1>
 				</div>
                 <div id="login-pane" class="col-md-12 col-sm-12 col-xs-12">
                 	<p>Please fill in the fields below to complete your order.
@@ -458,7 +460,7 @@
 							<div class="payment-pane">
 								<div class="pane round-box">
 									<h3 class="title">
-										<span class="icon icon-four">4</span>
+										<span class="icon icon-four">3.</span>
 										Payment method		
 									</h3>
 									<div class="pane-inner">
@@ -488,10 +490,10 @@
 								</div>
 							</div>
 		                </div><!-- payment_method -->
-		                <div class="delivery-time-pane col-md-6 col-sm-12 col-xs-12">
+		                {*<div class="delivery-time-pane col-md-6 col-sm-12 col-xs-12">
 	    					<div class="pane round-box">
 						        <h3 class="title">
-						            <span class="icon icon-five">3</span>
+						            <span class="icon icon-five">4</span>
 						            Delivery time        
 						        </h3>
 						        <div class="pane-inner">
@@ -516,7 +518,7 @@
 									</div>
 								</div>        
 	    					</div>
-	    				</div>  
+	    				</div>  *}
 					</div>
 				</div>
 			<div id="checkfull" class="col-md-8 col-sm-12 col-xs-12">
