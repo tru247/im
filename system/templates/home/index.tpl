@@ -106,35 +106,49 @@
                                 </div>
                                 <div class="info">
                                     <div class="row">
-                                        <div class="price col-md-6">
-                                            <h5>{$p.name|truncate:30}</h5>
+                                        <div class="col-md-12">
+                                            <h5>
+                                                <a href="/product/info/{$p.url}">
+                                                    {$p.name|truncate:30}
+                                                </a>
+                                            </h5>
                                         </div>
-                                        <div class="rating col-md-6">
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
                                             <h5 class="price-text-color" style="font-size: 12px;margin-top: 10px;font-weight: bold;">
                                                 {$app.currency}. {$p.price|number_format:2:".":","} 
                                             </h5>
                                         </div>
                                     </div>
-                                    <div class="separator clear-left">
-                                        <p class="btn-add">
-                                            <form class="product-cart-form">
-                                              <input type="hidden" name="pid" value="{$p.id}"/>
-                                              <input type="hidden" name="pname" value="{$p.name}"/>
-                                              <input type="hidden" name="pimage" value="{$p.image}"/>
-                                              <input type="hidden" name="pprice" value="{$p.price}"/>
-                                              <input type="hidden" name="pqty" value="1" />
-                                              <input type="hidden" value="{$p.url}" name="purl">
-                                              <button type="submit" class="btn btn-primary" style="background: #0EADA9; border-color: #0EADA9;">
-                                                <i class="fa fa-shopping-cart"></i>
-                                                Add to cart
-                                              </button>
-                                            </form>
-                                        </p>
-                                        <p class="btn-details">
-                                          <a href="/product/info/{$p.url}" class="" style="color: #0EADA9;">
-                                            <i class="fa fa-list"></i>
-                                          </a>
-                                        </p>
+                                    <br>
+                                    <div class="clear-left">
+                                        <div class="row">
+                                            <div class="col-md-6 col-xs-12">
+                                                {*<p class="btn-add">*}
+                                                    <form class="product-cart-form">
+                                                      <input type="hidden" name="pid" value="{$p.id}"/>
+                                                      <input type="hidden" name="pname" value="{$p.name}"/>
+                                                      <input type="hidden" name="pimage" value="{$p.image}"/>
+                                                      <input type="hidden" name="pprice" value="{$p.price}"/>
+                                                      <input type="hidden" name="pqty" value="1" />
+                                                      <input type="hidden" value="{$p.url}" name="purl">
+                                                      <button type="submit" class="btn btn-primary" style="background: #0EADA9; border-color: #0EADA9;">
+                                                        <i class="fa fa-shopping-cart"></i>
+                                                        Add to cart
+                                                      </button>
+                                                    </form>
+                                                {*</p>*}
+                                            </div>
+                                            <div class="col-md-6 col-xs-12">
+                                                {*<p class="btn-details">*}
+                                                  <a href="/product/info/{$p.url}" class="" style="color: #0EADA9;">
+                                                    <i class="fa fa-list"></i>
+                                                    More Details
+                                                  </a>
+                                                {*</p>*}
+                                            </div>
+                                        </div>
                                     </div>
                                     <div class="clearfix">
                                     </div>
